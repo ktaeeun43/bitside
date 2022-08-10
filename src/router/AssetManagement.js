@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import AssetManagementLayout from '../templates/AssetManagementLayout';
+import AssetManagementLayout from "../templates/AssetManagementLayout";
 function AssetManagement() {
   return (
     <>
@@ -8,7 +8,7 @@ function AssetManagement() {
     <div>AssetManagement</div>
     </AssetManagementLayout>
     </>
-  )
+  );
 }
 
-export default AssetManagement
+export default AssetManagement;

@@ -1,8 +1,11 @@
 import React from 'react'
+import DocumentManagementLayout from '../templates/DocumentManagementLayout'
 
 function DocumentsManegent() {
   return (
-    <div>DocumentsManegent</div>
+    <>
+      <DocumentManagementLayout/>
+    </>
   )
 }
 

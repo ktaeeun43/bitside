@@ -1,8 +1,11 @@
 import React from 'react'
-
+import RiskManagementLayout from '../templates/RiskManagementLayout'
 function RiskManegent() {
   return (
-    <div>RiskManegent</div>
+    <>
+      <RiskManagementLayout/>
+    </>
+    
   )
 }
 

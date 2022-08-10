@@ -1,8 +1,11 @@
 import React from 'react'
+import PolicyManagementLayout from "../templates/PolicyManagementLayout"
 
 function PolicyManagement() {
   return (
-    <div>PolicyManagement</div>
+    <>
+      <PolicyManagementLayout />
+    </>
   )
 }
 

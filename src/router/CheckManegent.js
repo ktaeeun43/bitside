@@ -1,8 +1,11 @@
 import React from 'react'
+import CheckManagementLayout from '../templates/CheckManagementLayout'
 
 function CheckManegent() {
   return (
-    <div>CheckManegent</div>
+    <>
+      <CheckManagementLayout/>
+    </>
   )
 }
 

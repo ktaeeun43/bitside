@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const AssetManagementLayout = (props) => {
+const SecurityCheckLayout = () => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -95,21 +95,20 @@ const AssetManagementLayout = (props) => {
           <Left>
             <StickyWrapper>
               <MenuTitleContainer>
-                <Title>수검사명</Title>
+                <Title>메뉴</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>자산 목록</MenuList>
-                <MenuList>네트워크 구성도</MenuList>
+                <MenuList>메뉴1</MenuList>
+                <MenuList>메뉴2</MenuList>
+                <MenuList>메뉴3</MenuList>
               </MenuContainer>
             </StickyWrapper>
           </Left>
-          <Right>
-            {props.children}
-          </Right>
+          <Right></Right>
         </Wrapper>
       </NoticeWrapper>
     </PageWrapper>
   );
 };
 
-export default AssetManagementLayout;
+export default SecurityCheckLayout;
