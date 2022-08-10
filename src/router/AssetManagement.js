@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import AssetManagementLayout from '../templates/AssetManagementLayout';
+import AssetManagementLayout from "../templates/AssetManagementLayout";
 function AssetManagement() {
   return (
     <>
-    <AssetManagementLayout />
-    <div>AssetManagement</div>
+      <AssetManagementLayout />
+      <div>AssetManagement</div>
     </>
-  )
+  );
 }
 
-export default AssetManagement
+export default AssetManagement;

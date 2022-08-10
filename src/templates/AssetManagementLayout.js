@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
 
 const NoticeWrapper = styled.div` 
@@ -43,28 +43,28 @@ const Right = styled.div`
 `;
 
 const StickyWrapper = styled.div`
-    position: sticky;
-    top: calc(${NAV_HEIGHT} + 10px);
-    background-color: ${COLOR_WHITE};
+  position: sticky;
+  top: calc(${NAV_HEIGHT} + 10px);
+  background-color: ${COLOR_WHITE};
 `;
 const MenuTitleContainer = styled.div`
-    height: 10px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    background-color: #b9cbfd;;
-    padding: 30px 20px;
+  height: 10px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: #b9cbfd;
+  padding: 30px 20px;
 `;
 
 const Title = styled.div`
-    font-size: 22px;
-    font-weight: 800;
-    color: ${COLOR_WHITE};
-    word-break: break-all;
+  font-size: 22px;
+  font-weight: 800;
+  color: ${COLOR_WHITE};
+  word-break: break-all;
 `;
 const MenuContainer = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 const MenuList = styled.a`
     display: flex;
@@ -87,32 +87,30 @@ const MenuList = styled.a`
     }
 `;
 
-
 const AssetManagementLayout = () => {
-    return (
-                <PageWrapper >
-                    <NoticeWrapper >
-                        <Wrapper >
-                            <Left>
-                                <StickyWrapper>
-                                    <MenuTitleContainer>
-                                        <Title>제목</Title>
-                                    </MenuTitleContainer>
-                                    <MenuContainer>
-                                        <MenuList>메뉴1</MenuList>
-                                     <MenuList >메뉴2</MenuList>
-                                     <MenuList >메뉴3</MenuList>
-                                     <MenuList >메뉴4</MenuList>
-                                     <MenuList >메뉴5</MenuList>
-                                    </MenuContainer>
-                                </StickyWrapper>
-                            </Left>
-                            <Right>
-                            </Right>
-                        </Wrapper>
-                    </NoticeWrapper>
-                </PageWrapper>
-    );
+  return (
+    <PageWrapper>
+      <NoticeWrapper>
+        <Wrapper>
+          <Left>
+            <StickyWrapper>
+              <MenuTitleContainer>
+                <Title>제목</Title>
+              </MenuTitleContainer>
+              <MenuContainer>
+                <MenuList>메뉴1</MenuList>
+                <MenuList>메뉴2</MenuList>
+                <MenuList>메뉴3</MenuList>
+                <MenuList>메뉴4</MenuList>
+                <MenuList>메뉴5</MenuList>
+              </MenuContainer>
+            </StickyWrapper>
+          </Left>
+          <Right></Right>
+        </Wrapper>
+      </NoticeWrapper>
+    </PageWrapper>
+  );
 };
 
 export default AssetManagementLayout;

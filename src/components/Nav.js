@@ -1,9 +1,9 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import navList from '../atom/navList'
+import React from "react";
+import { Link } from "react-router-dom";
+import navList from "../atom/navList";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import {
   COLOR_BRAND,
   COLOR_DARK_BACKGROUND,
@@ -29,7 +29,7 @@ const NavContainer = styled.nav`
   padding-right: 30px;
   padding-left: 30px;
   box-sizing: border-box;
-  `;
+`;
 const AppContainer = styled.div`
   position: absolute;
   z-index: 2;
@@ -39,16 +39,15 @@ const AppContainer = styled.div`
   height: 120px;
   background-color: red;
   box-sizing: border-box;
-  `;
-  //border-bottom: 1px solid #d3d3d3; 네브바 하단줄
+`;
+//border-bottom: 1px solid #d3d3d3; 네브바 하단줄
 
-  const FloatingNoticeWrapper = styled.div`
-    
-    background-color: #4449ac;
-    border-radius: 5px;
-    padding: 1.125rem;
-    color: ${COLOR_WHITE};
-    overflow: hidden;
+const FloatingNoticeWrapper = styled.div`
+  background-color: #4449ac;
+  border-radius: 5px;
+  padding: 1.125rem;
+  color: ${COLOR_WHITE};
+  overflow: hidden;
 `;
 const NavWrapper = styled.div`
   width: 1280px;
@@ -90,8 +89,8 @@ const LeftSideLink = styled.div`
   height: ${NAV_HEIGHT};
   font-weight: bold;
 
-  &:hover{
-    background-color: ${COLOR_WHITE};  
+  &:hover {
+    background-color: ${COLOR_WHITE};
     color: ${COLOR_BRAND};
     text-decoration: none;
   }
@@ -108,7 +107,7 @@ const LeftSideSelectLink = styled.div`
   color: ${COLOR_WHITE};
   height: ${NAV_HEIGHT};
   font-weight: bold;
-  background-color: ${COLOR_WHITE};  
+  background-color: ${COLOR_WHITE};
   color: ${COLOR_BRAND};
 `;
 /* 호버시 색반전
@@ -149,7 +148,6 @@ const RightSideTime = styled.div`
   font-size: 0.9375rem;
   color: ${COLOR_WHITE};
   cursor: pointer;
-  
 `;
 const RightSideAppLink = styled.div`
   margin-left: 20px;
@@ -212,41 +210,33 @@ const Linker = styled.a`
 
 function Nav() {
   const location = useLocation();
-  const focus = location.pathname.split('/page/')[1];
+  const focus = location.pathname.split("/page/")[1];
   return (
     <>
-    <NavContainer>
-      <NavWrapper>
-      <LeftSide>
-      <Link to={`/`}>
-      <Logo src={process.env.REACT_APP_PUBLIC_LOGO_PATH}/>
-      </Link>
-    {navList.map(({ title, path }) => {
-      return (
-        <li>
-            <Link style={{textDecoration: 'none'}}
-              to={`/page/${path}`}
-              >
-              { focus == path ? 
-              <LeftSideSelectLink>
-              {title}  
-              </LeftSideSelectLink>
-              :
-              <LeftSideLink>
-              {title}  
-              </LeftSideLink>
-              }
+      <NavContainer>
+        <NavWrapper>
+          <LeftSide>
+            <Link to={`/`}>
+              <Logo src={process.env.REACT_APP_PUBLIC_LOGO_PATH} />
             </Link>
-          </li>
-        );
-      })}
-
-      </LeftSide>
-
-      </NavWrapper>
+            {navList.map(({ title, path }) => {
+              return (
+                <li>
+                  <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
+                    {focus == path ? (
+                      <LeftSideSelectLink>{title}</LeftSideSelectLink>
+                    ) : (
+                      <LeftSideLink>{title}</LeftSideLink>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </LeftSide>
+        </NavWrapper>
       </NavContainer>
     </>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
