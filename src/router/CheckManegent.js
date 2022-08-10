@@ -4,7 +4,9 @@ import CheckManagementLayout from '../templates/CheckManagementLayout'
 function CheckManegent() {
   return (
     <>
-      <CheckManagementLayout/>
+      <CheckManagementLayout>
+      <div>CheckManagement</div>
+      </CheckManagementLayout>
     </>
   )
 }

@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const SecurityCheckLayout = () => {
+const SecurityCheckLayout = (props) => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -104,7 +104,7 @@ const SecurityCheckLayout = () => {
               </MenuContainer>
             </StickyWrapper>
           </Left>
-          <Right></Right>
+          <Right>{props.children}</Right>
         </Wrapper>
       </NoticeWrapper>
     </PageWrapper>

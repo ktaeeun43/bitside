@@ -3,7 +3,9 @@ import RiskManagementLayout from '../templates/RiskManagementLayout'
 function RiskManegent() {
   return (
     <>
-      <RiskManagementLayout/>
+      <RiskManagementLayout>
+        <div>RiskManegent</div>
+      </RiskManagementLayout>
     </>
     
   )

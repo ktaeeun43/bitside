@@ -4,7 +4,9 @@ import PolicyManagementLayout from "../templates/PolicyManagementLayout"
 function PolicyManagement() {
   return (
     <>
-      <PolicyManagementLayout />
+      <PolicyManagementLayout>
+        <div>PolicyManagement</div>
+      </PolicyManagementLayout>
     </>
   )
 }

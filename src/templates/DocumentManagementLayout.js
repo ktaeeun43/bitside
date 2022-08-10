@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const DocumentManagementLayout = () => {
+const DocumentManagementLayout = (props) => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -103,7 +103,7 @@ const DocumentManagementLayout = () => {
               </MenuContainer>
             </StickyWrapper>
           </Left>
-          <Right></Right>
+          <Right>{props.children}</Right>
         </Wrapper>
       </NoticeWrapper>
     </PageWrapper>

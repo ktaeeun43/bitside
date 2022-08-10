@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import navList from "../atom/navList";
+import navRightList from "../atom/navRightList";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useLocation } from "react-router-dom";
@@ -110,6 +111,21 @@ const LeftSideSelectLink = styled.div`
   background-color: ${COLOR_WHITE};
   color: ${COLOR_BRAND};
 `;
+const RightSideSelectLink = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${COLOR_WHITE};
+  height: ${NAV_HEIGHT};
+  font-weight: bold;
+  background-color: ${COLOR_WHITE};
+  color: ${COLOR_BRAND};
+`;
 /* 호버시 색반전
 const LeftSideLinkHover = styled.div`
   position: relative;
@@ -133,15 +149,22 @@ const RightSide = styled.div`
 `;
 
 const RightSideLink = styled.div`
-  margin-left: 20px;
-  font-size: 0.9375rem;
-  color: ${COLOR_WHITE};
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-    text-underline-offset: 10px;
-    text-decoration-thickness: 3px;
-  }
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: ${COLOR_WHITE};
+    height: ${NAV_HEIGHT};
+    font-weight: bold;
+    &:hover {
+      background-color: ${COLOR_WHITE};
+      color: ${COLOR_BRAND};
+      text-decoration: none;
+    }
 `;
 const RightSideTime = styled.div`
   margin-left: 20px;
@@ -221,7 +244,6 @@ function Nav() {
             </Link>
             {navList.map(({ title, path }) => {
               return (
-                <li>
                   <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
                     {focus == path ? (
                       <LeftSideSelectLink>{title}</LeftSideSelectLink>
@@ -229,10 +251,23 @@ function Nav() {
                       <LeftSideLink>{title}</LeftSideLink>
                     )}
                   </Link>
-                </li>
               );
             })}
           </LeftSide>
+          <RightSide>
+            {navRightList.map(({ title, path }) => {
+              return (
+                  <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
+                    {focus == path ? (
+                      <RightSideSelectLink>{title}</RightSideSelectLink>
+                      ) : (
+                      <RightSideLink>{title}</RightSideLink>
+                        )}
+                  </Link>
+              );
+            })}
+            <RightSideTime>User</RightSideTime>
+            </RightSide>
         </NavWrapper>
       </NavContainer>
     </>

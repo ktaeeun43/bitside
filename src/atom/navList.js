@@ -11,9 +11,6 @@ const navList = [
      path: "DocumentsManegent"},
      {title: "보안검사",
      path: "SecurityCheck"},
-     {title: "관리자",
-     path: "Admin"},
-     {title: "정보변경",
-     path: "UserUpdate"},
+     
 ]
 export default navList;

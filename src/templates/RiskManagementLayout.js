@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const RiskManagementLayout = () => {
+const RiskManagementLayout = (props) => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -105,7 +105,7 @@ const RiskManagementLayout = () => {
               </MenuContainer>
             </StickyWrapper>
           </Left>
-          <Right></Right>
+          <Right>{props.children}</Right>
         </Wrapper>
       </NoticeWrapper>
     </PageWrapper>

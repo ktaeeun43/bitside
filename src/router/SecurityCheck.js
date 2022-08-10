@@ -4,7 +4,9 @@ import SecurityCheckLayout from '../templates/SecurityCheckLayout'
 function SecurityCheck() {
   return (
     <>
-      <SecurityCheckLayout/>
+      <SecurityCheckLayout>
+        <div>SecurityCheck</div>
+      </SecurityCheckLayout>
     </>
   )
 }
