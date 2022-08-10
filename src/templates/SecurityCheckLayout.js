@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const AssetManagementLayout = () => {
+const SecurityCheckLayout = () => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -95,11 +95,12 @@ const AssetManagementLayout = () => {
           <Left>
             <StickyWrapper>
               <MenuTitleContainer>
-                <Title>수검사명</Title>
+                <Title>메뉴</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>자산 목록</MenuList>
-                <MenuList>네트워크 구성도</MenuList>
+                <MenuList>메뉴1</MenuList>
+                <MenuList>메뉴2</MenuList>
+                <MenuList>메뉴3</MenuList>
               </MenuContainer>
             </StickyWrapper>
           </Left>
@@ -110,4 +111,4 @@ const AssetManagementLayout = () => {
   );
 };
 
-export default AssetManagementLayout;
+export default SecurityCheckLayout;

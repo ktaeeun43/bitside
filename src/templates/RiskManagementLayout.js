@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const AssetManagementLayout = () => {
+const RiskManagementLayout = () => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -98,8 +98,10 @@ const AssetManagementLayout = () => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>자산 목록</MenuList>
-                <MenuList>네트워크 구성도</MenuList>
+                <MenuList>위협분석</MenuList>
+                <MenuList>위험평가</MenuList>
+                <MenuList>위험관리수준</MenuList>
+                <MenuList>정보보호계획</MenuList>
               </MenuContainer>
             </StickyWrapper>
           </Left>
@@ -110,4 +112,4 @@ const AssetManagementLayout = () => {
   );
 };
 
-export default AssetManagementLayout;
+export default RiskManagementLayout;

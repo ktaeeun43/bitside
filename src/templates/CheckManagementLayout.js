@@ -87,7 +87,7 @@ const MenuList = styled.a`
     }
 `;
 
-const AssetManagementLayout = () => {
+const CheckManagementLayout = () => {
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -98,8 +98,11 @@ const AssetManagementLayout = () => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>자산 목록</MenuList>
-                <MenuList>네트워크 구성도</MenuList>
+                <MenuList>정책관리</MenuList>
+                <MenuList>관리체계 수립 및 운영</MenuList>
+                <MenuList>보호대책 요구사항</MenuList>
+                <MenuList>개인정보 처리 단계별 요구사항</MenuList>
+                <MenuList>기술적진단</MenuList>
               </MenuContainer>
             </StickyWrapper>
           </Left>
@@ -110,4 +113,4 @@ const AssetManagementLayout = () => {
   );
 };
 
-export default AssetManagementLayout;
+export default CheckManagementLayout;

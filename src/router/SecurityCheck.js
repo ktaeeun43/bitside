@@ -1,8 +1,11 @@
 import React from 'react'
+import SecurityCheckLayout from '../templates/SecurityCheckLayout'
 
 function SecurityCheck() {
   return (
-    <div>SecurityCheck</div>
+    <>
+      <SecurityCheckLayout/>
+    </>
   )
 }
 

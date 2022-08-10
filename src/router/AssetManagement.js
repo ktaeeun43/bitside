@@ -5,7 +5,6 @@ function AssetManagement() {
   return (
     <>
       <AssetManagementLayout />
-      <div>AssetManagement</div>
     </>
   );
 }
