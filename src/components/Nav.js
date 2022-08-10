@@ -149,22 +149,22 @@ const RightSide = styled.div`
 `;
 
 const RightSideLink = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 0.9375rem;
-    cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${COLOR_WHITE};
+  height: ${NAV_HEIGHT};
+  font-weight: bold;
+  &:hover {
+    background-color: ${COLOR_WHITE};
+    color: ${COLOR_BRAND};
     text-decoration: none;
-    color: ${COLOR_WHITE};
-    height: ${NAV_HEIGHT};
-    font-weight: bold;
-    &:hover {
-      background-color: ${COLOR_WHITE};
-      color: ${COLOR_BRAND};
-      text-decoration: none;
-    }
+  }
 `;
 const RightSideTime = styled.div`
   margin-left: 20px;
@@ -244,30 +244,30 @@ function Nav() {
             </Link>
             {navList.map(({ title, path }) => {
               return (
-                  <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
-                    {focus == path ? (
-                      <LeftSideSelectLink>{title}</LeftSideSelectLink>
-                    ) : (
-                      <LeftSideLink>{title}</LeftSideLink>
-                    )}
-                  </Link>
+                <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
+                  {focus == path ? (
+                    <LeftSideSelectLink>{title}</LeftSideSelectLink>
+                  ) : (
+                    <LeftSideLink>{title}</LeftSideLink>
+                  )}
+                </Link>
               );
             })}
           </LeftSide>
           <RightSide>
             {navRightList.map(({ title, path }) => {
               return (
-                  <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
-                    {focus == path ? (
-                      <RightSideSelectLink>{title}</RightSideSelectLink>
-                      ) : (
-                      <RightSideLink>{title}</RightSideLink>
-                        )}
-                  </Link>
+                <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
+                  {focus == path ? (
+                    <RightSideSelectLink>{title}</RightSideSelectLink>
+                  ) : (
+                    <RightSideLink>{title}</RightSideLink>
+                  )}
+                </Link>
               );
             })}
             <RightSideTime>User</RightSideTime>
-            </RightSide>
+          </RightSide>
         </NavWrapper>
       </NavContainer>
     </>

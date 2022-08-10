@@ -1,14 +1,14 @@
-import React from 'react'
-import CheckManagementLayout from '../templates/CheckManagementLayout'
+import React from "react";
+import CheckManagementLayout from "../templates/CheckManagementLayout";
 
 function CheckManegent() {
   return (
     <>
       <CheckManagementLayout>
-      <div>CheckManagement</div>
+        <div>CheckManagement</div>
       </CheckManagementLayout>
     </>
-  )
+  );
 }
 
-export default CheckManegent
+export default CheckManegent;
