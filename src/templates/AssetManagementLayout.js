@@ -88,7 +88,7 @@ const MenuList = styled.a`
 `;
 
 
-const AssetManagementLayout = () => {
+const AssetManagementLayout = (props) => {
     return (
                 <PageWrapper >
                     <NoticeWrapper >
@@ -108,6 +108,7 @@ const AssetManagementLayout = () => {
                                 </StickyWrapper>
                             </Left>
                             <Right>
+                                {props.children}
                             </Right>
                         </Wrapper>
                     </NoticeWrapper>
