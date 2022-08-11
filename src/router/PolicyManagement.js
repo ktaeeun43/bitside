@@ -1,5 +1,5 @@
-import React from 'react'
-import PolicyManagementLayout from "../templates/PolicyManagementLayout"
+import React from "react";
+import PolicyManagementLayout from "../templates/PolicyManagementLayout";
 
 function PolicyManagement() {
   return (
@@ -8,7 +8,7 @@ function PolicyManagement() {
         <div>PolicyManagement</div>
       </PolicyManagementLayout>
     </>
-  )
+  );
 }
 
-export default PolicyManagement
+export default PolicyManagement;

@@ -1,5 +1,5 @@
-import React from 'react'
-import RiskManagementLayout from '../templates/RiskManagementLayout'
+import React from "react";
+import RiskManagementLayout from "../templates/RiskManagementLayout";
 function RiskManegent() {
   return (
     <>
@@ -7,8 +7,7 @@ function RiskManegent() {
         <div>RiskManegent</div>
       </RiskManagementLayout>
     </>
-    
-  )
+  );
 }
 
-export default RiskManegent
+export default RiskManegent;

@@ -1,5 +1,5 @@
-import React from 'react'
-import SecurityCheckLayout from '../templates/SecurityCheckLayout'
+import React from "react";
+import SecurityCheckLayout from "../templates/SecurityCheckLayout";
 
 function SecurityCheck() {
   return (
@@ -8,7 +8,7 @@ function SecurityCheck() {
         <div>SecurityCheck</div>
       </SecurityCheckLayout>
     </>
-  )
+  );
 }
 
-export default SecurityCheck
+export default SecurityCheck;

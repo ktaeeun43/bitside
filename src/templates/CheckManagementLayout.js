@@ -106,9 +106,7 @@ const CheckManagementLayout = (props) => {
               </MenuContainer>
             </StickyWrapper>
           </Left>
-          <Right>
-            {props.children}
-          </Right>
+          <Right>{props.children}</Right>
         </Wrapper>
       </NoticeWrapper>
     </PageWrapper>

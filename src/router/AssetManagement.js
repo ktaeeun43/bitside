@@ -4,9 +4,9 @@ import AssetManagementLayout from "../templates/AssetManagementLayout";
 function AssetManagement() {
   return (
     <>
-    <AssetManagementLayout>
-    <div>AssetManagement</div>
-    </AssetManagementLayout>
+      <AssetManagementLayout>
+        <div>AssetManagement</div>
+      </AssetManagementLayout>
     </>
   );
 }

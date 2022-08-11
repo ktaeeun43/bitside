@@ -1,5 +1,5 @@
-import React from 'react'
-import DocumentManagementLayout from '../templates/DocumentManagementLayout'
+import React from "react";
+import DocumentManagementLayout from "../templates/DocumentManagementLayout";
 
 function DocumentsManegent() {
   return (
@@ -8,7 +8,7 @@ function DocumentsManegent() {
         <div>DocumentsManegent</div>
       </DocumentManagementLayout>
     </>
-  )
+  );
 }
 
-export default DocumentsManegent
+export default DocumentsManegent;

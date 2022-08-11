@@ -7,10 +7,10 @@ function CheckManegent() {
     <>
       <Outlet/> 
       <CheckManagementLayout>
-      <div>CheckManagement</div>
+        <div>CheckManagement</div>
       </CheckManagementLayout>
     </>
-  )
+  );
 }
 
-export default CheckManegent
+export default CheckManegent;
