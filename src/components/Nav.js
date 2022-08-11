@@ -233,7 +233,7 @@ const Linker = styled.a`
 
 function Nav() {
   const location = useLocation();
-  const focus = location.pathname.split("/page/")[1];
+  const focus = location.pathname.split("/")[2];
   return (
     <>
       <NavContainer>
@@ -246,9 +246,9 @@ function Nav() {
               return (
                   <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
                     {focus == path ? (
-                      <LeftSideSelectLink>{title}</LeftSideSelectLink>
+                      <LeftSideSelectLink key={path}>{title}</LeftSideSelectLink>
                     ) : (
-                      <LeftSideLink>{title}</LeftSideLink>
+                      <LeftSideLink key={path}>{title}</LeftSideLink>
                     )}
                   </Link>
               );
@@ -259,12 +259,13 @@ function Nav() {
               return (
                   <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
                     {focus == path ? (
-                      <RightSideSelectLink>{title}</RightSideSelectLink>
+                      <RightSideSelectLink  key={path}>{title}</RightSideSelectLink>
                       ) : (
-                      <RightSideLink>{title}</RightSideLink>
+                      <RightSideLink  key={path}>{title}</RightSideLink>
                         )}
                   </Link>
               );
+
             })}
             <RightSideTime>User</RightSideTime>
             </RightSide>

@@ -19,7 +19,7 @@ import SecurityCheck from "./router/SecurityCheck";
 import UserUpdate from "./router/UserUpdate";
 import Home from "./router/Home";
 import Nav from "./components/Nav";
-
+import CheckDetail from "./router/CheckDetail";
 function App() {
   return (
     <RecoilRoot>
@@ -35,7 +35,9 @@ function App() {
             path="/page/AssetManagement"
             element={<AssetManagement />}
           ></Route>
-          <Route path="/page/CheckManegent" element={<CheckManegent />}></Route>
+          <Route path="/page/CheckManegent" element={<CheckManegent />}>
+            <Route path=":detail" element={<CheckDetail />} />
+          </Route>
           <Route path="/page/RiskManegent" element={<RiskManegent />}></Route>
           <Route
             path="/page/DocumentsManegent"
