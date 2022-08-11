@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components";
 import {
   COLOR_BRAND,
@@ -6,7 +6,7 @@ import {
   COLOR_FALL_BLUE,
   COLOR_FONT_DARK_GRAY,
   EXCHANGE_NAME,
-  NAV_HEIGHT,
+  NAV_HEIGHT,COLOR_WHITE,COLOR_ABLE_BUTTON,
   COLOR_FONT_LOGIN_ID_PASSWORD,COLOR_LAYOUT_BACKGROUND
 } from "../constants";
 const BoxContainer = styled.div`
@@ -159,8 +159,47 @@ const ImageContainer = styled.div`
   top: 0;
   left: 0;
 `;
+const Button = styled.div`
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 0.3rem 0.875rem;
+    color: ${COLOR_WHITE};
+    font-size: 0.875rem;
+    background-color: ${COLOR_ABLE_BUTTON};
+    cursor: pointer;
+    border-radius: 4px;
+    word-break: keep-all;
+`;
 
-function Home() {
+
+const Home = () =>{
+
+  const [id ,setID] =useState("");
+  const [password ,setPassword] = useState("");
+
+  const onPressInputText = (e) => {
+    if (e.key === "Enter") {
+     return onClick();
+    }
+  }
+  const  onChangeID = (e) => {
+      setID(e.target.value);
+    };
+  
+  const  onChangePassword = (e) => {
+      setPassword(e.target.value);
+    };
+  const onClick = () => {
+      let body = ({
+          id: id,
+          password: password
+
+      })
+    console.log("로그인",body);
+    };
   return (
       <NoticeWrapper>
         <BoxContainer >
@@ -174,6 +213,8 @@ function Home() {
                 <Input
                   type={"input"}
                   placeholder="아이디를 입력해주세요"
+                  onChange={onChangeID}
+                  value={id}
                   />
               </InputContainer>
               <InputContainer>
@@ -181,8 +222,14 @@ function Home() {
                 <Input
                   type={"password"}
                   placeholder="비밀번호를 입력해주세요"
+                  onChange={onChangePassword}
+                  value={password}
+                  onKeyDown={onPressInputText}
                 />
               </InputContainer>
+              <ButtonContainer>
+                <Button onClick={onClick}>로그인하기</Button>
+              </ButtonContainer>
             </MidInputsContainer>
           </Wrapper>
         </BoxContainer>
