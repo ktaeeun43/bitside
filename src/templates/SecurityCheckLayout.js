@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import SecurityCheckList from "../atom/SecurityCheckList";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
-
+import { Link } from "react-router-dom";
 const NoticeWrapper = styled.div` 
     width: 100%;
     flex: 1 0 auto;
@@ -98,9 +99,13 @@ const SecurityCheckLayout = (props) => {
                 <Title>메뉴</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>메뉴1</MenuList>
-                <MenuList>메뉴2</MenuList>
-                <MenuList>메뉴3</MenuList>
+              {SecurityCheckList.map(({ title, path }) => {
+              return (
+                <Link style={{ textDecoration: "none" }} to={`/page/SecurityCheck/${path}`}>
+                  {title}
+                </Link>
+              );
+            })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

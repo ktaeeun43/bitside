@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
+import PolicyManagementList from "../atom/PolicyManagementList";
+import { Link } from "react-router-dom";
 
 const NoticeWrapper = styled.div` 
     width: 100%;
@@ -98,7 +100,13 @@ const PolicyManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>정보보호정핵</MenuList>
+              {PolicyManagementList.map(({ title, path }) => {
+              return (
+                <Link style={{ textDecoration: "none" }} to={`/page/PolicyManagement/${path}`}>
+                  {title}
+                </Link>
+              );
+            })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

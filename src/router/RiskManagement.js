@@ -1,8 +1,10 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import RiskManagementLayout from "../templates/RiskManagementLayout";
-function RiskManegent() {
+function RiskManegement() {
   return (
     <>
+    <Outlet/>
       <RiskManagementLayout>
         <div>RiskManegent</div>
       </RiskManagementLayout>
@@ -10,4 +12,4 @@ function RiskManegent() {
   );
 }
 
-export default RiskManegent;
+export default RiskManegement;

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
+import { Link } from "react-router-dom";
+import DocumentsManegentList from "../atom/DocumentsManagementList";
 
 const NoticeWrapper = styled.div` 
     width: 100%;
@@ -98,8 +100,13 @@ const DocumentManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>증적목록</MenuList>
-                <MenuList>운영명세서</MenuList>
+              {DocumentsManegentList.map(({ title, path }) => {
+              return (
+                <Link style={{ textDecoration: "none" }} to={`/page/DocumentsManegent/${path}`}>
+                  {title}
+                </Link>
+              );
+            })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

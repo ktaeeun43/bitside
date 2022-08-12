@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
+import { Link } from "react-router-dom";
+import RiskManagementList from "../atom/RiskManagementList";
 
 const NoticeWrapper = styled.div` 
     width: 100%;
@@ -98,10 +100,13 @@ const RiskManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                <MenuList>위협분석</MenuList>
-                <MenuList>위험평가</MenuList>
-                <MenuList>위험관리수준</MenuList>
-                <MenuList>정보보호계획</MenuList>
+              {RiskManagementList.map(({ title, path }) => {
+              return (
+                <Link style={{ textDecoration: "none" }} to={`/page/RiskManagement/${path}`}>
+                  {title}
+                </Link>
+              );
+            })}
               </MenuContainer>
             </StickyWrapper>
           </Left>
