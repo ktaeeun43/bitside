@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import AssetManagementLayout from "../templates/AssetManagementLayout";
-function AssetManagement() {
+const  AssetManagement = () => {
   return (
-    <>
       <AssetManagementLayout>
         <div>AssetManagement</div>
       </AssetManagementLayout>
-    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
+import { Link } from "react-router-dom";
 
 const NoticeWrapper = styled.div` 
     width: 100%;
@@ -98,8 +99,12 @@ const AssetManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
+                <Link to="/page/AssetManagement/list">
                 <MenuList>자산 목록</MenuList>
+                </Link>
+                <Link to="/page/AssetManagement/network">
                 <MenuList>네트워크 구성도</MenuList>
+                </Link>
               </MenuContainer>
             </StickyWrapper>
           </Left>
