@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SecurityCheckList from "../atom/SecurityCheckList";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const NoticeWrapper = styled.div` 
     width: 100%;
     flex: 1 0 auto;
@@ -87,8 +87,18 @@ const MenuList = styled.a`
         text-decoration: none;
     }
 `;
-
+const MenuSelectList = styled.a`
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 10px 10px 25px;
+    text-decoration: none;
+    font-weight: 800;
+`;
 const SecurityCheckLayout = (props) => {
+  const location = useLocation();
+  const focus = location.pathname.split("/SecurityCheck/")[1];
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -102,12 +112,17 @@ const SecurityCheckLayout = (props) => {
                 {SecurityCheckList.map(({ title, path }) => {
                   return (
                     <Link
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none" , color: "black" }}
                     to={`/page/SecurityCheck/${path}`}
                     >
-                        <MenuList>
+                     { focus === path ?
+                    <MenuSelectList>
                         {title}
+                    </MenuSelectList> :
+                    <MenuList >
+                      {title}
                     </MenuList>
+                    }
                       </Link>
                   );
                 })}

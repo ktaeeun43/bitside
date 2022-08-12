@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DocumentsManegentList from "../atom/DocumentsManagementList";
 
 const NoticeWrapper = styled.div` 
@@ -88,8 +88,18 @@ const MenuList = styled.a`
         text-decoration: none;
     }
 `;
-
+const MenuSelectList = styled.a`
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 10px 10px 25px;
+    text-decoration: none;
+    font-weight: 800;
+`;
 const DocumentManagementLayout = (props) => {
+  const location = useLocation();
+  const focus = location.pathname.split("/DocumentsManegent/")[1];
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -103,12 +113,17 @@ const DocumentManagementLayout = (props) => {
                 {DocumentsManegentList.map(({ title, path }) => {
                   return (
                     <Link
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none" , color: "black"  }}
                     to={`/page/DocumentsManegent/${path}`}
                     >
-                        <MenuList>
+                   { focus === path ?
+                    <MenuSelectList>
                         {title}
+                    </MenuSelectList> :
+                    <MenuList >
+                      {title}
                     </MenuList>
+                    }
                       </Link>
                   );
                 })}
