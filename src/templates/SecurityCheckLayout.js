@@ -101,14 +101,14 @@ const SecurityCheckLayout = (props) => {
               <MenuContainer>
                 {SecurityCheckList.map(({ title, path }) => {
                   return (
-                    <MenuList>
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to={`/page/SecurityCheck/${path}`}
-                      >
+                    <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/page/SecurityCheck/${path}`}
+                    >
+                        <MenuList>
                         {title}
-                      </Link>
                     </MenuList>
+                      </Link>
                   );
                 })}
               </MenuContainer>

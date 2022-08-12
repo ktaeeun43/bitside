@@ -102,14 +102,14 @@ const DocumentManagementLayout = (props) => {
               <MenuContainer>
                 {DocumentsManegentList.map(({ title, path }) => {
                   return (
-                    <MenuList>
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to={`/page/DocumentsManegent/${path}`}
-                      >
+                    <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/page/DocumentsManegent/${path}`}
+                    >
+                        <MenuList>
                         {title}
-                      </Link>
                     </MenuList>
+                      </Link>
                   );
                 })}
               </MenuContainer>

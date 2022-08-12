@@ -102,14 +102,14 @@ const PolicyManagementLayout = (props) => {
               <MenuContainer>
                 {PolicyManagementList.map(({ title, path }) => {
                   return (
-                    <MenuList>
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to={`/page/PolicyManagement/${path}`}
-                      >
+                    <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/page/PolicyManagement/${path}`}
+                    >
+                        <MenuList>
                         {title}
-                      </Link>
                     </MenuList>
+                      </Link>
                   );
                 })}
               </MenuContainer>

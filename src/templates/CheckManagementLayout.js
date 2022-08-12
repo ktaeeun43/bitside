@@ -101,14 +101,14 @@ const CheckManagementLayout = (props) => {
               <MenuContainer>
                 {CheckManagementList.map(({ title, path }) => {
                   return (
-                    <MenuList>
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to={`/page/CheckManegent/${path}`}
-                      >
+                    <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/page/CheckManegent/${path}`}
+                    >
+                        <MenuList>
                         {title}
-                      </Link>
                     </MenuList>
+                      </Link>
                   );
                 })}
               </MenuContainer>
