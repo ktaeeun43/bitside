@@ -245,7 +245,7 @@ function Nav() {
             {navList.map(({ title, path }) => {
               return (
                 <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
-                  {focus == path ? (
+                  {focus === path ? (
                     <LeftSideSelectLink key={path}>{title}</LeftSideSelectLink>
                   ) : (
                     <LeftSideLink key={path}>{title}</LeftSideLink>
@@ -258,7 +258,7 @@ function Nav() {
             {navRightList.map(({ title, path }) => {
               return (
                   <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
-                    {focus == path ? (
+                    {focus === path ? (
                       <RightSideSelectLink  key={path}>{title}</RightSideSelectLink>
                       ) : (
                       <RightSideLink  key={path}>{title}</RightSideLink>

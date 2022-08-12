@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
+import { Link } from "react-router-dom";
 
 const NoticeWrapper = styled.div` 
     width: 100%;
@@ -98,7 +99,9 @@ const CheckManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
+                <Link to="/page/CheckManegent/detail">
                 <MenuList>정책관리</MenuList>
+                </Link>
                 <MenuList>관리체계 수립 및 운영</MenuList>
                 <MenuList>보호대책 요구사항</MenuList>
                 <MenuList>개인정보 처리 단계별 요구사항</MenuList>
