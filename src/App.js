@@ -37,6 +37,7 @@ function App() {
           ></Route>
           <Route path="/page/CheckManegent" element={<CheckManegent />}>
             <Route path=":detail" element={<CheckDetail />} />
+            
           </Route>
           <Route path="/page/RiskManegent" element={<RiskManegent />}></Route>
           <Route
