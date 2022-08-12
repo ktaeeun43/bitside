@@ -5,6 +5,7 @@ import CheckManagementLayout from "../templates/CheckManagementLayout";
 const CheckOperate = () => {
     return (
         <>
+        <Outlet />
         <CheckManagementLayout>
             <h1>관리체계 수립 및 운영</h1>
         </CheckManagementLayout>

@@ -102,9 +102,12 @@ const AssetManagementLayout = (props) => {
               <MenuContainer>
               {AssetManagementList.map(({ title, path }) => {
               return (
+                <MenuList>
+
                 <Link style={{ textDecoration: "none" }} to={`/page/AssetManagement/${path}`}>
                   {title}
                 </Link>
+                </MenuList>
               );
             })}
               </MenuContainer>
