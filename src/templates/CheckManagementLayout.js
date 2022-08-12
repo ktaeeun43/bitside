@@ -99,16 +99,18 @@ const CheckManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-              {CheckManagementList.map(({ title, path }) => {
-              return (
-                <MenuList>
-
-                <Link style={{ textDecoration: "none" }} to={`/page/CheckManegent/${path}`}>
-                  {title}
-                </Link>
-                </MenuList>
-              );
-            })}
+                {CheckManagementList.map(({ title, path }) => {
+                  return (
+                    <MenuList>
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to={`/page/CheckManegent/${path}`}
+                      >
+                        {title}
+                      </Link>
+                    </MenuList>
+                  );
+                })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

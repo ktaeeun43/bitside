@@ -100,16 +100,18 @@ const PolicyManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-              {PolicyManagementList.map(({ title, path }) => {
-              return (
-                <MenuList>
-
-                <Link style={{ textDecoration: "none" }} to={`/page/PolicyManagement/${path}`}>
-                  {title}
-                </Link>
-                </MenuList>
-              );
-            })}
+                {PolicyManagementList.map(({ title, path }) => {
+                  return (
+                    <MenuList>
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to={`/page/PolicyManagement/${path}`}
+                      >
+                        {title}
+                      </Link>
+                    </MenuList>
+                  );
+                })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

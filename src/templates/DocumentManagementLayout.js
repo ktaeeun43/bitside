@@ -100,16 +100,18 @@ const DocumentManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-              {DocumentsManegentList.map(({ title, path }) => {
-              return (
-                <MenuList>
-
-                <Link style={{ textDecoration: "none" }} to={`/page/DocumentsManegent/${path}`}>
-                  {title}
-                </Link>
-                </MenuList>
-              );
-            })}
+                {DocumentsManegentList.map(({ title, path }) => {
+                  return (
+                    <MenuList>
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to={`/page/DocumentsManegent/${path}`}
+                      >
+                        {title}
+                      </Link>
+                    </MenuList>
+                  );
+                })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

@@ -257,15 +257,16 @@ function Nav() {
           <RightSide>
             {navRightList.map(({ title, path }) => {
               return (
-                  <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
-                    {focus === path ? (
-                      <RightSideSelectLink  key={path}>{title}</RightSideSelectLink>
-                      ) : (
-                      <RightSideLink  key={path}>{title}</RightSideLink>
-                        )}
-                  </Link>
+                <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
+                  {focus === path ? (
+                    <RightSideSelectLink key={path}>
+                      {title}
+                    </RightSideSelectLink>
+                  ) : (
+                    <RightSideLink key={path}>{title}</RightSideLink>
+                  )}
+                </Link>
               );
-
             })}
             <RightSideTime>User</RightSideTime>
           </RightSide>

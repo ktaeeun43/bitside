@@ -5,7 +5,7 @@ import DocumentManagementLayout from "../templates/DocumentManagementLayout";
 function DocumentsManegent() {
   return (
     <>
-      <Outlet/>
+      <Outlet />
       <DocumentManagementLayout>
         <div>DocumentsManegent</div>
       </DocumentManagementLayout>

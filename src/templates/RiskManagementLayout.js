@@ -100,16 +100,18 @@ const RiskManagementLayout = (props) => {
                 <Title>수검사명</Title>
               </MenuTitleContainer>
               <MenuContainer>
-              {RiskManagementList.map(({ title, path }) => {
-              return (
-                <MenuList>
-
-                <Link style={{ textDecoration: "none" }} to={`/page/RiskManagement/${path}`}>
-                  {title}
-                </Link>
-                </MenuList>
-              );
-            })}
+                {RiskManagementList.map(({ title, path }) => {
+                  return (
+                    <MenuList>
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to={`/page/RiskManagement/${path}`}
+                      >
+                        {title}
+                      </Link>
+                    </MenuList>
+                  );
+                })}
               </MenuContainer>
             </StickyWrapper>
           </Left>

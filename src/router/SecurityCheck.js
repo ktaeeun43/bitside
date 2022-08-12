@@ -5,7 +5,7 @@ import SecurityCheckLayout from "../templates/SecurityCheckLayout";
 function SecurityCheck() {
   return (
     <>
-      <Outlet/>
+      <Outlet />
       <SecurityCheckLayout>
         <div>SecurityCheck</div>
       </SecurityCheckLayout>

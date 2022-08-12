@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   COLOR_BRAND,
@@ -6,8 +6,11 @@ import {
   COLOR_FALL_BLUE,
   COLOR_FONT_DARK_GRAY,
   EXCHANGE_NAME,
-  NAV_HEIGHT,COLOR_WHITE,COLOR_ABLE_BUTTON,
-  COLOR_FONT_LOGIN_ID_PASSWORD,COLOR_LAYOUT_BACKGROUND
+  NAV_HEIGHT,
+  COLOR_WHITE,
+  COLOR_ABLE_BUTTON,
+  COLOR_FONT_LOGIN_ID_PASSWORD,
+  COLOR_LAYOUT_BACKGROUND,
 } from "../constants";
 const BoxContainer = styled.div`
   flex: 1 0 0%;
@@ -58,7 +61,6 @@ const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  
 `;
 
 const InputLabel = styled.label`
@@ -108,7 +110,6 @@ const NoticeWrapper = styled.div`
     min-height: calc(100vh - 110px);
     width: '1280px'};
 `;
-
 
 const AdditionalOptionContainer = styled.div`
   margin-top: 25px;
@@ -160,81 +161,78 @@ const ImageContainer = styled.div`
   left: 0;
 `;
 const Button = styled.div`
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    padding: 0.3rem 0.875rem;
-    color: ${COLOR_WHITE};
-    font-size: 0.875rem;
-    background-color: ${COLOR_ABLE_BUTTON};
-    cursor: pointer;
-    border-radius: 4px;
-    word-break: keep-all;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 0.3rem 0.875rem;
+  color: ${COLOR_WHITE};
+  font-size: 0.875rem;
+  background-color: ${COLOR_ABLE_BUTTON};
+  cursor: pointer;
+  border-radius: 4px;
+  word-break: keep-all;
 `;
 
-
-const Home = () =>{
-
-  const [id ,setID] =useState("");
-  const [password ,setPassword] = useState("");
+const Home = () => {
+  const [id, setID] = useState("");
+  const [password, setPassword] = useState("");
 
   const onPressInputText = (e) => {
     if (e.key === "Enter") {
-     return onClick();
+      return onClick();
     }
-  }
-  const  onChangeID = (e) => {
-      setID(e.target.value);
-    };
-  
-  const  onChangePassword = (e) => {
-      setPassword(e.target.value);
-    };
+  };
+  const onChangeID = (e) => {
+    setID(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
   const onClick = () => {
-      let body = ({
-          id: id,
-          password: password
-
-      })
-    console.log("로그인",body);
+    let body = {
+      id: id,
+      password: password,
     };
+    console.log("로그인", body);
+  };
   return (
-      <NoticeWrapper>
-        <BoxContainer >
-          <Wrapper >
-            <TopContainer>
-              <TopTitle >로그인</TopTitle>
-            </TopContainer>
-            <MidInputsContainer>
-              <InputContainer>
-                <InputLabel>ID</InputLabel>
-                <Input
-                  type={"input"}
-                  placeholder="아이디를 입력해주세요"
-                  onChange={onChangeID}
-                  value={id}
-                  />
-              </InputContainer>
-              <InputContainer>
-                <InputLabel>비밀번호</InputLabel>
-                <Input
-                  type={"password"}
-                  placeholder="비밀번호를 입력해주세요"
-                  onChange={onChangePassword}
-                  value={password}
-                  onKeyDown={onPressInputText}
-                />
-              </InputContainer>
-              <ButtonContainer>
-                <Button onClick={onClick}>로그인하기</Button>
-              </ButtonContainer>
-            </MidInputsContainer>
-          </Wrapper>
-        </BoxContainer>
-      </NoticeWrapper>
-  )
-}
+    <NoticeWrapper>
+      <BoxContainer>
+        <Wrapper>
+          <TopContainer>
+            <TopTitle>로그인</TopTitle>
+          </TopContainer>
+          <MidInputsContainer>
+            <InputContainer>
+              <InputLabel>ID</InputLabel>
+              <Input
+                type={"input"}
+                placeholder="아이디를 입력해주세요"
+                onChange={onChangeID}
+                value={id}
+              />
+            </InputContainer>
+            <InputContainer>
+              <InputLabel>비밀번호</InputLabel>
+              <Input
+                type={"password"}
+                placeholder="비밀번호를 입력해주세요"
+                onChange={onChangePassword}
+                value={password}
+                onKeyDown={onPressInputText}
+              />
+            </InputContainer>
+            <ButtonContainer>
+              <Button onClick={onClick}>로그인하기</Button>
+            </ButtonContainer>
+          </MidInputsContainer>
+        </Wrapper>
+      </BoxContainer>
+    </NoticeWrapper>
+  );
+};
 
-export default Home
+export default Home;

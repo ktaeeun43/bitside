@@ -1,11 +1,11 @@
-import React from 'react'
-import RiskManagementLayout from '../templates/RiskManagementLayout'
+import React from "react";
+import RiskManagementLayout from "../templates/RiskManagementLayout";
 
 const Results = () => {
-    return (
-        <RiskManagementLayout>
-            <h1>위험평가</h1>
-        </RiskManagementLayout>
-    );
+  return (
+    <RiskManagementLayout>
+      <h1>위험평가</h1>
+    </RiskManagementLayout>
+  );
 };
-export default Results
+export default Results;
