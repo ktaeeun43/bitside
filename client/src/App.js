@@ -9,36 +9,35 @@ import {
   Router,
   Routes,
 } from "react-router-dom";
-import Admin from "./router/admin/Admin";
-import AssetManagement from "./router/assetManagement/AssetManagement";
-import CheckManegent from "./router/checkManagement/CheckManegent"; 
-import DocumentsManagement from "./router/documentManagement/DocumentsManegent"; 
-import PolicyManagement from "./router/policyManagementpage/PolicyManagement";
-import RiskManagement from "./router/riskManagement/RiskManagement"; 
-import SecurityCheck from "./router/securityCheck/SecurityCheck"; 
-import UserUpdate from "./router/UserUpdate";
-import Home from "./router/Home";
+import Admin from "./pages/Admin/Admin";
+import AssetManagement from "./pages/assetManagement/AssetManagement";
+import CheckManegent from "./pages/checkManagement/CheckManegent"; 
+import DocumentsManagement from "./pages/documentManagement/DocumentsManegent"; 
+import PolicyManagement from "./pages/policyManagementpage/PolicyManagement";
+import RiskManagement from "./pages/riskManagement/RiskManagement"; 
+import SecurityCheck from "./pages/securityCheck/SecurityCheck"; 
+import UserUpdate from "./pages/UserUpdate";
+import Home from "./pages/Home";
 import Nav from "./components/Nav";
-import CheckDetail from "./router/checkManagement/CheckDetail"; 
-import CheckOperate from "./router/checkManagement/CheckOperate";
-import Requirements from "./router/checkManagement/Requirements"; 
-import PersonalInformation from "./router/checkManagement/PersonalInformation"; 
-import TechCheck from "./router/checkManagement/TeckCheck"; 
-import AssetList from "./router/assetManagement/AssetList"; 
-import AssetNetWork from "./router/assetManagement/Network";
-import Protect from "./router/policyManagementpage/Protect"; 
-import Analysis from "./router/riskManagement/Analysis"; 
-import Results from "./router/riskManagement/Results"; 
-import ManagemenetCheck from "./router/riskManagement/ManagemenetCheck"; 
-import SecurityPlan from "./router/riskManagement/SecurityPlan"; 
-import DocumentTraces from "./router/documentManagement/DocumentTraces";
-import Receipt from "./router/documentManagement/Receipt"; 
-import Menu1 from "./router/securityCheck/Menu1";
-import Menu2 from "./router/securityCheck/Menu2";
-import Menu3 from "./router/securityCheck/Menu3";
-import AdminManagement from "./router/admin/AdminManagement";
-import AdminList from "./atom/AdminList";
-import AdminRegister from "./router/admin/AdminRegister";
+import CheckDetail from "./pages/checkManagement/CheckDetail"; 
+import CheckOperate from "./pages/checkManagement/CheckOperate";
+import Requirements from "./pages/checkManagement/Requirements"; 
+import PersonalInformation from "./pages/checkManagement/PersonalInformation"; 
+import TechCheck from "./pages/checkManagement/TeckCheck"; 
+import AssetList from "./pages/assetManagement/AssetList"; 
+import AssetNetWork from "./pages/assetManagement/Network";
+import Protect from "./pages/policyManagementpage/Protect"; 
+import Analysis from "./pages/riskManagement/Analysis"; 
+import Results from "./pages/riskManagement/Results"; 
+import ManagemenetCheck from "./pages/riskManagement/ManagemenetCheck"; 
+import SecurityPlan from "./pages/riskManagement/SecurityPlan"; 
+import DocumentTraces from "./pages/documentManagement/DocumentTraces";
+import Receipt from "./pages/documentManagement/Receipt"; 
+import Menu1 from "./pages/securityCheck/Menu1";
+import Menu2 from "./pages/securityCheck/Menu2";
+import Menu3 from "./pages/securityCheck/Menu3";
+import AdminManagement from "./pages/Admin/AdminManagement";
+import AdminRegister from "./pages/Admin/AdminRegister";
 
 function App() {
   return (
@@ -78,9 +77,9 @@ function App() {
             <Route path="menu3" element={<Menu3/>}/>
           </Route>
           <Route path="/page/Admin" element={<Admin />}>
-            <Route path="register" element={<AdminRegister/>} />
+          <Route path="register" element={<AdminRegister/>} />
+            <Route path="userManagement" element={<AdminManagement/>} />
           </Route>
-            <Route path="/page/Admin/userManagement" element={<AdminManagement/>} />
           <Route path="/page/UserUpdate" element={<UserUpdate />}></Route>
         </Routes>
       </BrowserRouter>
