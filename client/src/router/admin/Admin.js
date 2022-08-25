@@ -9,7 +9,6 @@ function Admin() {
       <AdminLayout>
       <div>d1d23</div>
       </AdminLayout>
-      
     </>
   );
 }

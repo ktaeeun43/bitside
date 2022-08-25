@@ -1,7 +1,14 @@
 import React from "react";
+import styled from "styled-components";
+
 
 function UserUpdate() {
-  return <div>UserUpdate</div>;
+  return (
+    <>
+    
+    </>
+
+  )
 }
 
 export default UserUpdate;
