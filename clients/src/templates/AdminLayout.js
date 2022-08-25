@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, NAV_HEIGHT } from "../constants";
 import { Link, useLocation } from "react-router-dom";
-import DocumentsManegentList from "../atom/DocumentsManagementList";
+import AdminList from "../atom/AdminList";
 
 const NoticeWrapper = styled.div` 
     width: 100%;
@@ -97,9 +97,10 @@ const MenuSelectList = styled.a`
     text-decoration: none;
     font-weight: 800;
 `;
-const DocumentManagementLayout = (props) => {
+
+const AdminLayout = (props) => {
   const location = useLocation();
-  const focus = location.pathname.split("/DocumentsManegent/")[1];
+  const focus = location.pathname.split("/Admin/")[1];
   return (
     <PageWrapper>
       <NoticeWrapper>
@@ -107,16 +108,16 @@ const DocumentManagementLayout = (props) => {
           <Left>
             <StickyWrapper>
               <MenuTitleContainer>
-                <Title>수검사명</Title>
+                <Title>관리자</Title>
               </MenuTitleContainer>
               <MenuContainer>
-                {DocumentsManegentList.map(({ title, path }) => {
+                {AdminList.map(({ title, path }) => {
                   return (
                     <Link
-                    style={{ textDecoration: "none" , color: "black"  }}
-                    to={`/page/DocumentsManagement/${path}`}
+                    style={{ textDecoration: "none", color: "black"  }}
+                    to={`/page/Admin/${path}`}
                     >
-                   { focus === path ?
+                    { focus === path ?
                     <MenuSelectList>
                         {title}
                     </MenuSelectList> :
@@ -137,4 +138,4 @@ const DocumentManagementLayout = (props) => {
   );
 };
 
-export default DocumentManagementLayout;
+export default AdminLayout;

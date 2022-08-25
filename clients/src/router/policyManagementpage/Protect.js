@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import PolicyManagementLayout from "../templates/PolicyManagementLayout";
+import PolicyManagementLayout from "../../templates/PolicyManagementLayout";
 
 const Protect = () => {
   return (

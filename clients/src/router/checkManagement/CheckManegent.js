@@ -1,16 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import CheckManagementLayout from "../templates/CheckManagementLayout";
+import CheckManagementLayout from "../../templates/CheckManagementLayout"; 
 
-const CheckOperate = () => {
+function CheckManegent() {
   return (
     <>
       <Outlet />
       <CheckManagementLayout>
-        <h1>관리체계 수립 및 운영</h1>
+        <div>CheckManagement</div>
       </CheckManagementLayout>
     </>
   );
-};
+}
 
-export default CheckOperate;
+export default CheckManegent;

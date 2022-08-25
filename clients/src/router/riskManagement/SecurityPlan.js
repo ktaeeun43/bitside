@@ -1,5 +1,5 @@
 import React from "react";
-import RiskManagementLayout from "../templates/RiskManagementLayout";
+import RiskManagementLayout from "../../templates/RiskManagementLayout";
 
 const SecurityPlan = () => {
   return (

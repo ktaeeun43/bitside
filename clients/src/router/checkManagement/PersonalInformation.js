@@ -1,5 +1,5 @@
 import React from "react";
-import CheckManagementLayout from "../templates/CheckManagementLayout";
+import CheckManagementLayout from "../../templates/CheckManagementLayout";
 
 const PersonalInformation = () => {
   return (

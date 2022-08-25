@@ -1,5 +1,5 @@
 import React from "react";
-import DocumentManagementLayout from "../templates/DocumentManagementLayout";
+import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 
 const DocumentTraces = () => {
   return (

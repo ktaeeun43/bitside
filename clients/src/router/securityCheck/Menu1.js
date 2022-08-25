@@ -1,5 +1,5 @@
 import React from "react";
-import SecurityCheckLayout from "../templates/SecurityCheckLayout";
+import SecurityCheckLayout from "../../templates/SecurityCheckLayout";
 
 const Menu1 = () => {
   return (

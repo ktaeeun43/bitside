@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import SecurityCheckLayout from "../templates/SecurityCheckLayout";
+import SecurityCheckLayout from "../../templates/SecurityCheckLayout";
 
 function SecurityCheck() {
   return (

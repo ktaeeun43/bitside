@@ -1,16 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import DocumentManagementLayout from "../templates/DocumentManagementLayout";
+import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 
-function DocumentsManegent() {
+function DocumentsManagement() {
   return (
     <>
       <Outlet />
       <DocumentManagementLayout>
-        <div>DocumentsManegent</div>
+        <div>DocumentsManegen</div>
       </DocumentManagementLayout>
     </>
   );
 }
 
-export default DocumentsManegent;
+export default DocumentsManagement;
