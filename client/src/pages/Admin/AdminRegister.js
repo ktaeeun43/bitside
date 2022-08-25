@@ -30,7 +30,7 @@ const BoxWrapper = styled.div`
  flex: 1 0 0%;
  max-width: 370px;
  width: 100%;
- margin: ${(props) => (props.isMobile ? "0 auto" : "60px auto")};
+ margin: ${(props) => (props.isMobile ? "0 auto" : "20px auto")};
  position: relative;
 `;
 
@@ -247,15 +247,6 @@ const AdminRegister = () => {
                         <MenuItem value={2}>2</MenuItem>
                         <MenuItem value={3}>3</MenuItem>
                         </Select>
-                        </InputWrapper>
-                        <InputWrapper>
-                        <InputLabel>메일</InputLabel>
-                        <Input 
-                            type={"input"}
-                            placeholder="메일 주소를 입력해주세요."
-                            onChange={onChangeMail}
-                            value={mail}
-                        />
                         </InputWrapper>
                         <InputWrapper>
                         <InputLabel>연락처</InputLabel>

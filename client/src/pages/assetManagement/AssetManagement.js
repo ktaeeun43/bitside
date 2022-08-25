@@ -1,14 +1,19 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import styled from "styled-components";
+import { Outlet, useLocation } from "react-router-dom";
 import AssetManagementLayout from "../../templates/AssetManagementLayout"; 
-const AssetManagement = () => {
+
+function AssetManagement() {
+
+  const location = useLocation();
+  const focus = location.pathname.split("/AssetManagement/")[1];
+
   return (
     <>
       <Outlet />
+      {focus ? null : 
       <AssetManagementLayout>
         <div>AssetManagement</div>
-      </AssetManagementLayout>
+      </AssetManagementLayout>}
     </>
   );
 };
