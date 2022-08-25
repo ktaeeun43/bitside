@@ -101,8 +101,8 @@ const AdminRegister = () => {
     const [mail, setMail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [checkPasswordError, setCheckPasswordError] = useState("")
-    const [password, setPassword] = useState("");
     
+    const [password, setPassword] = useState("");
     const [idError, setIdError] = useState("");
     const [passWordError, setPasswordError] = useState("");
     const [mailError, setMailError] = useState("");
@@ -160,15 +160,23 @@ const AdminRegister = () => {
     }
 
     function onChangeCheckPassword(event) {
+        console.log(event, "비밀번호확인");
         setCheckPasswordError(event.target.value);
-        if (event.target.value !== "") {
-            setCheckPasswordError("");
-        }
+       
     }
 
 
 
     async function onClickRegister() {
+        let body = {
+            id: id,
+            name: name,
+            department: department,
+            role: role,
+            phoneNumber: phoneNumber,
+            password: password
+        }
+        console.log(body,"유저가입");
         if(id === "") {
             setIdError("계정이 입력되지 않았습니다.")
         }
@@ -185,15 +193,6 @@ const AdminRegister = () => {
         
         if(checkPasswordError === "") {
             setCheckPasswordError("확인 비밀번호가 입력되지 않았습니다.")
-            return;
-        }
-
-        if (/\w+@\w+\.\w+/.test(mail) === false) {
-        alert("이메일 형식이 아닙니다!");
-        return;
-        }
-
-        if (password !== setPassword) {
             return;
         }
     }
@@ -272,7 +271,7 @@ const AdminRegister = () => {
                             type={"password"}
                             placeholder="비밀번호를 한번 더 입력해주세요."
                             onChange={onChangeCheckPassword}
-                            value={setCheckPasswordError}
+                            value={checkPasswordError}
                         />
                         </InputWrapper>
                         <BoxWrapper>
