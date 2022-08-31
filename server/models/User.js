@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
     type: String,
     minglength: 5,
   },
-  lastname: {
+  department: {
     type: String,
     maxlength: 50,
   },
@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  image: String,
+  phoneNumber: Number,
   token: {
     type: String,
   },

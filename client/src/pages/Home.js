@@ -13,6 +13,9 @@ import {
   COLOR_FONT_LOGIN_ID_PASSWORD,
   COLOR_LAYOUT_BACKGROUND,
 } from "../constants";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../_actions/user_actions";
+import { Navigate, useNavigate } from "react-router-dom";
 const BoxContainer = styled.div`
   flex: 1 0 0%;
   max-width: 370px;
@@ -177,8 +180,16 @@ const Button = styled.div`
 `;
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [id, setID] = useState("");
+  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(rememberMeChecked)
+  const [formErrorMessage, setFormErrorMessage] = useState('')
+  const navigate = useNavigate();
+  const handleRememberMe = () => {
+    setRememberMe(!rememberMe)
+  };
   useEffect(() => {
   }, [])
   const onPressInputText = (e) => {
@@ -200,7 +211,22 @@ const Home = () => {
       id: id,
       password: password,
     };
-    console.log("로그인", body);
+    dispatch(loginUser(body))
+    .then(response => {
+      if (response.payload.loginSuccess) {
+        console.log("로그인성공", response.payload.userId)
+        window.localStorage.setItem('userId', response.payload.userId);
+        return navigate('page/Admin')
+      } else {
+        setFormErrorMessage('Check out your Account or Password again')
+      }
+    })
+    .catch(err => {
+      setFormErrorMessage('Check out your Account or Password again')
+      setTimeout(() => {
+        setFormErrorMessage("")
+      }, 3000);
+    });
   };
   return (
     <NoticeWrapper>

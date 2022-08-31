@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../_actions/user_actions";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const RegisterWrapper = styled.div`
 width: 100%;
@@ -101,7 +103,8 @@ const AdminRegister = () => {
     const [mail, setMail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [checkPasswordError, setCheckPasswordError] = useState("")
-    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [password, setPassword] = useState("");
     const [idError, setIdError] = useState("");
     const [passWordError, setPasswordError] = useState("");
@@ -169,13 +172,15 @@ const AdminRegister = () => {
 
     async function onClickRegister() {
         let body = {
-            id: id,
+            email: id,
             name: name,
             department: department,
             role: role,
             phoneNumber: phoneNumber,
             password: password
         }
+
+        
         console.log(body,"유저가입");
         if(id === "") {
             setIdError("계정이 입력되지 않았습니다.")
@@ -195,6 +200,14 @@ const AdminRegister = () => {
             setCheckPasswordError("확인 비밀번호가 입력되지 않았습니다.")
             return;
         }
+        dispatch(registerUser(body)).then(response => {
+            if (response.payload.success) {
+                return navigate('/page/Admin')
+            } else {
+              alert(response.payload.err.errmsg)
+            }
+          })
+        
     }
 
     return (

@@ -234,6 +234,7 @@ const Linker = styled.a`
 function Nav() {
   const location = useLocation();
   const focus = location.pathname.split("/")[2];
+  const userName = window.localStorage.getItem("userId");
   return (
     <>
       <NavContainer>
@@ -268,7 +269,7 @@ function Nav() {
                 </Link>
               );
             })}
-            <RightSideTime>User</RightSideTime>
+            <RightSideTime>{userName} 님</RightSideTime>
           </RightSide>
         </NavWrapper>
       </NavContainer>
