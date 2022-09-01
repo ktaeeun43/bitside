@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.get('/api/hello', (req,res) => res.send('Hello Bitvelo!'));
+app.get("/api/hello", (req, res) => res.send("Hello Bitvelo!"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/video", require("./routes/video"));
 app.use("/api/subscribe", require("./routes/subscribe"));
@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`);
