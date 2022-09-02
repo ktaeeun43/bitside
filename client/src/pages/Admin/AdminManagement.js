@@ -28,8 +28,8 @@ const StyledTableCellTitle = styled.div`
 const StyledTableCellValue = styled.div`
   display: flex;
   align-items: center;
-  flex: 1;
-  padding: 1.2rem 1.6rem;
+  flex: 0 0 12rem;
+  padding: 1.1rem 1rem;
 `;
 
 const StyledTableRow = styled.tr`
@@ -62,6 +62,7 @@ const AdminManagement = () => {
     });
   }, []);
   console.log(users, "사용자");
+
   return (
     <>
       <AdminLayout>
@@ -83,13 +84,13 @@ const AdminManagement = () => {
                 <>
                   <StyledTableRow>
                     <TableCell>
-                      <StyledTableCellTitle>{user.email}</StyledTableCellTitle>
-                      <StyledTableCellTitle>{user.name}</StyledTableCellTitle>
-                      <StyledTableCellTitle>
+                      <StyledTableCellValue>{user.email}</StyledTableCellValue>
+                      <StyledTableCellValue>{user.name}</StyledTableCellValue>
+                      <StyledTableCellValue>
                         {" "}
                         {user.department}
-                      </StyledTableCellTitle>
-                      <StyledTableCellTitle>{user.role}</StyledTableCellTitle>
+                      </StyledTableCellValue>
+                      <StyledTableCellValue>{user.role}</StyledTableCellValue>
                     </TableCell>
                   </StyledTableRow>
                 </>
