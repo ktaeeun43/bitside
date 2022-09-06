@@ -7,3 +7,4 @@ const navList = [
   { title: "보안검사", path: "SecurityCheck" },
 ];
 export default navList;
+ 
