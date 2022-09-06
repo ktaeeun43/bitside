@@ -10,31 +10,32 @@ const ffmpeg = require("fluent-ffmpeg");
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, "uploads/network/");
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`);
+    cb(null, `네트워크_${file.originalname}`);
+    console.log(file,"응답");
   },
 });
 
 const fileFilter = (req, file, cb) => {
   // mime type 체크하여 원하는 타입만 필터링
-
+  if (file.mimetype != "video/mp4") {
+    cb(null, true);
+  } else {
+    cb({ msg: "mp4 파일만 업로드 가능합니다." }, false);
+  }
 };
 
 let upload = multer({ storage: storage, fileFilter: fileFilter }).single(
   "file"
 );
 
-//=================================
-//             Video
-//=================================
-
-router.post("/uploads", (req, res) => {
+router.post("/upload", (req, res) => {
   //    문서를 서버에 저장한다.
   //   console.log("비디오 req");
   //   console.log(req);
-
+  console.log(req,"업로드 응답")
   upload(req, res, (err) => {
     if (err) {
       return res.json({ success: false, err });
@@ -57,20 +58,19 @@ router.get("/getVideos", (req, res) => {
     });
 });
 
-router.post("/getVideoDetail", (req, res) => {
-  Video.findOne({ _id: req.body.videoId })
-    .populate("writer")
-    .exec((err, videoDetail) => {
-      if (err) return res.status(400).send(err);
-      res.status(200).json({ success: true, videoDetail });
-    });
+router.get("/getNetwork", (req, res) => {
+  console.log(req,"네트워크")
+  File.find().exec((err, file) => {
+    if (err) return res.status(400).send(err);
+    res.status(200).json({ success: true, file });
+  });
 });
 
-router.post("/uploadVideo", (req, res) => {
+router.post("/uploadNetwork", (req, res) => {
   //비디오 정보저장
 
   const file = new File(req.body);
-
+  console.log(file,"네트워크 구상도");
   file.save((err, doc) => {
     if (err) return res.json({ success: false, err });
     res.status(200).json({ success: true });

@@ -237,6 +237,11 @@ function Nav() {
   const navigate = useNavigate();
   const focus = location.pathname.split("/")[2];
   const userName = window.localStorage.getItem("userName");
+  let today =  new Date();
+  let dday = new Date(2022,9,9);
+  let gap = today.getTime() - dday.getTime();
+  const day = Math.floor(gap / (1000 * 60 * 60 * 24));
+  let result = Math.ceil( );
   const onClickLogOut = () =>{
     axios.get( `/api/users/logout`).then(response => {
        if(response.data.success) {
@@ -249,6 +254,7 @@ function Nav() {
     })
   }
 
+  console.log(day, "dday")
 
   return (
     <>
@@ -271,6 +277,8 @@ function Nav() {
             })}
           </LeftSide>
           <RightSide>
+
+            <RightSideTime>심사까지 D{day}</RightSideTime>
             {navRightList.map(({ title, path }) => {
               return (
                 <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>

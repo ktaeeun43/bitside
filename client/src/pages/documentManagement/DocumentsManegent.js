@@ -14,7 +14,11 @@ function DocumentsManagement() {
       <Outlet />
       {focus ? null :
       <DocumentManagementLayout>
-        <div>DocumentsManegen</div>
+        <h1>증적자료 업로드</h1>
+          <form encType='multipart/form-data'>
+            <input type='file' name='file' />
+            <button type='submit'>업로드</button>
+        </form>
       </DocumentManagementLayout>}
     </>
   );

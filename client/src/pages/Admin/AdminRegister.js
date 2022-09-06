@@ -115,7 +115,7 @@ const AdminRegister = (props) => {
     const [phoneNumberError, setphoneNumberError] = useState("");
     const [role, setRole] = useState('');
     const user = useSelector((state) => state.User);
-
+    console.log(user,"로그인유저");
     function onChangeRole(event) {
         setRole(event.target.value);
     }

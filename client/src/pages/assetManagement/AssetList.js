@@ -4,6 +4,31 @@ import { Outlet } from "react-router-dom";
 import AssetManagementLayout from "../../templates/AssetManagementLayout"; 
 import styled from "styled-components";
 
+
+const Wrapper = styled.div`
+  height: ${(props) => (props.isMobile ? "100%" : "")};
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid rgb(230, 230, 230);
+  padding: ${(props) => (props.isMobile ? "1.1875rem" : "40px 20px")};
+  overflow: auto;
+`;
+const NotiWrapper = styled.div`
+  height: ${(props) => (props.isMobile ? "100%" : "")};
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid rgb(230, 230, 230);
+  padding: ${(props) => (props.isMobile ? "1.1875rem" : "40px 20px")};
+  overflow: auto;
+  `;
+  const MidInputsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  `;
+
 const Table = styled.div`
   display: table;
   width: 100%;
@@ -37,6 +62,14 @@ const StyledTableCellTitle = styled.div`
   padding: 1rem 1rem;
   word-break: keep-all;
 `;
+const StyledTableCellValue = styled.div`
+display: flex;
+align-items: center;
+background-color: white;
+flex: 0 0 4.8rem;
+padding: 1rem 1rem;
+word-break: keep-all;
+`;
 
 
 const AssetList = () => {
@@ -58,7 +91,7 @@ const AssetList = () => {
         <Title>자산목록</Title>
         </Table>
         <BoxContainer>
-
+        <Wrapper>
         <StyledTableRow>
           <TableCell>
             <StyledTableCellTitle>No</StyledTableCellTitle>
@@ -76,6 +109,28 @@ const AssetList = () => {
             <StyledTableCellTitle>서비스</StyledTableCellTitle>
           </TableCell>
         </StyledTableRow>
+        {assets.map((asset, idx) => {
+              return (
+                <>
+                  <StyledTableRow key={asset._id}>
+                    <TableCell>
+                      <StyledTableCellValue>{idx}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.status}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.type}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.assetcode}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.hostname}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.version}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.IPadress}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.usetype}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.location}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.employee}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.level}</StyledTableCellValue>
+                    </TableCell>
+                  </StyledTableRow>
+                </>
+              );
+            })}
+        </Wrapper>
         </BoxContainer>
       </AssetManagementLayout>
     </>

@@ -111,7 +111,7 @@ function AssetManagement() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.User);
   const focus = location.pathname.split("/AssetManagement/")[1];
-
+  
   const [code, setCode] = useState("");
   const [host, setHost] = useState("");
   const [version, setVersion] = useState("");
@@ -125,7 +125,7 @@ function AssetManagement() {
   const [production, setProduction] = useState("");
   const [type, setType] = useState("");
   const [level, setLevel] = useState("");
-
+  console.log(user,"로그인 유저")
   function onChangeService(event) {
     setService(event.target.value);
   }
