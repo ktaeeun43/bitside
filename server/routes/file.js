@@ -69,9 +69,9 @@ router.post("/getVideoDetail", (req, res) => {
 router.post("/uploadVideo", (req, res) => {
   //비디오 정보저장
 
-  const video = new Video(req.body);
+  const file = new File(req.body);
 
-  video.save((err, doc) => {
+  file.save((err, doc) => {
     if (err) return res.json({ success: false, err });
     res.status(200).json({ success: true });
   });
