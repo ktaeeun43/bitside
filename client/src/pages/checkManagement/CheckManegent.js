@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import CheckManagementLayout from "../../templates/CheckManagementLayout"; 
+import Auth from "../../hoc/auth";
 
 function CheckManegent() {
   const location = useLocation();
@@ -18,4 +19,4 @@ function CheckManegent() {
   );
 }
 
-export default CheckManegent;
+export default Auth(CheckManegent, true);

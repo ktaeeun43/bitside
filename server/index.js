@@ -38,7 +38,7 @@ app.get("/api/hello", (req, res) => res.send("Hello Bitvelo!"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/video", require("./routes/video"));
 app.use("/api/subscribe", require("./routes/subscribe"));
-app.use("/api/comment", require("./routes/comment"));
+app.use("/api/anouncement", require("./routes/anouncement"));
 app.use("/api/like", require("./routes/like"));
 
 //use this to show the image you have in node js server to client (react js)

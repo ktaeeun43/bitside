@@ -1,6 +1,8 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
+import Auth from "../../hoc/auth";
+
 function RiskManegement() {
   const location = useLocation();
   const focus = location.pathname.split("/RiskManagement/")[1];
@@ -17,4 +19,4 @@ function RiskManegement() {
   );
 }
 
-export default RiskManegement;
+export default Auth(RiskManegement,true);

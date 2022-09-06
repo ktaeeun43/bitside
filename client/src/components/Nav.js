@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import navList from "../atom/navList";
 import navRightList from "../atom/navRightList";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   COLOR_BRAND,
   COLOR_DARK_BACKGROUND,
@@ -15,6 +15,7 @@ import {
   COLOR_WHITE,
   NAV_HEIGHT,
 } from "../constants";
+import axios from "axios";
 
 const NavContainer = styled.nav`
   position: flex;
@@ -233,8 +234,22 @@ const Linker = styled.a`
 
 function Nav() {
   const location = useLocation();
+  const navigate = useNavigate();
   const focus = location.pathname.split("/")[2];
-  const userName = window.localStorage.getItem("userId");
+  const userName = window.localStorage.getItem("userName");
+  const onClickLogOut = () =>{
+    axios.get( `/api/users/logout`).then(response => {
+       if(response.data.success) {
+        window.localStorage.setItem("userName" , "");
+        return navigate('/login')
+       } else {
+        alert("Log Out Failed");
+       }
+
+    })
+  }
+
+
   return (
     <>
       <NavContainer>
@@ -270,6 +285,11 @@ function Nav() {
               );
             })}
             <RightSideTime>{userName} 님</RightSideTime>
+            { userName ? 
+              <RightSideTime onClick={onClickLogOut}>로그아웃</RightSideTime>
+              :
+              null 
+            }
           </RightSide>
         </NavWrapper>
       </NavContainer>

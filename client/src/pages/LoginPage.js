@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import moment from "moment";
-
 import {
   COLOR_BRAND,
   COLOR_DISABLE_BUTTON,
@@ -17,25 +15,16 @@ import {
 } from "../constants";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../_actions/user_actions";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 const BoxContainer = styled.div`
   flex: 1 0 0%;
-  max-width: 700px;
+  max-width: 370px;
   width: 100%;
   margin: ${(props) => (props.isMobile ? "0 auto" : "60px auto")};
   position: relative;
 `;
 
 const Wrapper = styled.div`
-  height: ${(props) => (props.isMobile ? "100%" : "")};
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border: 1px solid rgb(230, 230, 230);
-  padding: ${(props) => (props.isMobile ? "1.1875rem" : "40px 20px")};
-  overflow: auto;
-`;
-const NotiWrapper = styled.div`
   height: ${(props) => (props.isMobile ? "100%" : "")};
   display: flex;
   flex-direction: column;
@@ -70,11 +59,7 @@ const TopWelcome = styled.div`
   font-size: 12px;
 `;
 
-const MidInputsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-`;
+const MidInputsContainer = styled.div``;
 
 const InputContainer = styled.div`
   display: flex;
@@ -194,98 +179,90 @@ const Button = styled.div`
   word-break: keep-all;
 `;
 
-const StyledTableRow = styled.tr`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-`;
-
-const StyledTableColumn = styled.tr`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-const Table = styled.div`
-  display: table;
-  width: "100%";
-`;
-
-const TableCell = styled.td`
-  display: flex;
-  border-top: 1px solid #e9eaef;
-  border-left: 1px solid #e9eaef;
-  &:last-child {
-    border-right: 1px solid #e9eaef;
-  }
-  border-right: 1px solid #e9eaef;
-  display: flex;
-  width: 100%;
-`;
-const StyledTableCellTitle = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 0 0 12rem;
-  text-align: start;
-  background-color: #f5f5f7;
-  padding: 1.2rem 1.6rem;
-  width: 12rem;
-  flex: 0 0 10rem;
-`;
-
-const StyledTableCellValue = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 0 0 12rem;
-  padding: 1.1rem 1rem;
-`;
-
-const Home = () => {
-  const [ anouncement, setAnouncements] = useState([])
+const LoginPage = () => {
+  const dispatch = useDispatch();
+  const [id, setID] = useState("");
+  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(rememberMeChecked)
+  const [formErrorMessage, setFormErrorMessage] = useState('')
+  const navigate = useNavigate();
+  const handleRememberMe = () => {
+    setRememberMe(!rememberMe)
+  };
   useEffect(() => {
-    //기존의 landingPage에 있는 코드 재사용
-    axios.get("/api/anouncement/getAnouncements").then((response) => {
-      if (response.data.success) {
-        const announcements = [ ...response.data.anouncements].sort().reverse()
-        setAnouncements(announcements);
-        console.log(announcements,"공지")
+  }, [])
+  const onPressInputText = (e) => {
+    if (e.key === "Enter") {
+      return onClick();
+    }
+  };
+  const onChangeID = (e) => {
+    setID(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  
+  const onClick = () => {
+    let body = {
+      id: id,
+      password: password,
+    };
+    dispatch(loginUser(body))
+    .then(response => {
+      if (response.payload.loginSuccess) {
+        window.localStorage.setItem('userName', response.payload.userName);
+        window.localStorage.setItem('userId', response.payload.useId);
+        return navigate('/')
       } else {
-        alert("유저 가져오기 실패!");
+        setFormErrorMessage('Check out your Account or Password again')
       }
+    })
+    .catch(err => {
+      setFormErrorMessage('Check out your Account or Password again')
+      setTimeout(() => {
+        setFormErrorMessage("")
+      }, 3000);
     });
-  }, []);
+  };
   return (
     <NoticeWrapper>
       <BoxContainer>
         <Wrapper>
+          <TopContainer>
+            <TopTitle>로그인</TopTitle>
+          </TopContainer>
           <MidInputsContainer>
-            Bitvelo ISMS 인증 프로그램
+            <InputContainer>
+              <InputLabel>ID</InputLabel>
+              <Input
+                type={"input"}
+                placeholder="아이디를 입력해주세요"
+                onChange={onChangeID}
+                value={id}
+              />
+            </InputContainer>
+            <InputContainer>
+              <InputLabel>비밀번호</InputLabel>
+              <Input
+                type={"password"}
+                placeholder="비밀번호를 입력해주세요"
+                onChange={onChangePassword}
+                value={password}
+                onKeyDown={onPressInputText}
+              />
+            </InputContainer>
+            <ButtonContainer>
+              <Button onClick={onClick}>로그인하기</Button>
+            </ButtonContainer>
           </MidInputsContainer>
         </Wrapper>
-          <NotiWrapper>
-          <MidInputsContainer>
-            공지사항
-          </MidInputsContainer>
-           {anouncement.map((anouncement) => {
-             let createdAt =  moment(anouncement.createdAt).format("YYYY-MM-DD")
-          return (
-            <div>
-            <Link style={{ textDecoration: "none" }} to={`/page/Admin/anouncement?${anouncement._id}`} >
-                  <StyledTableRow key={anouncement._id}>
-                    <TableCell>
-                      <StyledTableCellValue>{anouncement.type}</StyledTableCellValue>
-                      <StyledTableCellValue>{anouncement.title}</StyledTableCellValue>
-                      <StyledTableCellValue>{createdAt}</StyledTableCellValue>
-                    </TableCell>
-                  </StyledTableRow>
-            </Link>
-                </div>
-              );
-            })}
-            </NotiWrapper>
-            </BoxContainer>
+      </BoxContainer>
     </NoticeWrapper>
   );
 };
 
-export default Home;
+export default LoginPage;

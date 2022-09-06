@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import SecurityCheckLayout from "../../templates/SecurityCheckLayout";
+import Auth from "../../hoc/auth";
 
 function SecurityCheck() {
 
@@ -19,4 +20,4 @@ function SecurityCheck() {
   );
 }
 
-export default SecurityCheck;
+export default Auth(SecurityCheck,true);

@@ -7,6 +7,7 @@ import Select from '@mui/material/Select';
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../_actions/user_actions";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const RegisterWrapper = styled.div`
 width: 100%;
@@ -96,7 +97,7 @@ const Button = styled.div`
 `;
 
 
-const AdminRegister = () => {
+const AdminRegister = (props) => {
     const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [department, setDepartment] = useState("");
@@ -113,7 +114,7 @@ const AdminRegister = () => {
     const [departmentError, setdepartmentError] = useState("");
     const [phoneNumberError, setphoneNumberError] = useState("");
     const [role, setRole] = useState('');
-
+    const user = useSelector((state) => state.User);
 
     function onChangeRole(event) {
         setRole(event.target.value);
@@ -163,14 +164,14 @@ const AdminRegister = () => {
     }
 
     function onChangeCheckPassword(event) {
-        console.log(event, "비밀번호확인");
         setCheckPasswordError(event.target.value);
        
     }
 
 
 
-    async function onClickRegister() {
+    async function onClickRegister(e) {
+        e.preventDefault();
         let body = {
             email: id,
             name: name,
@@ -181,7 +182,6 @@ const AdminRegister = () => {
         }
 
         
-        console.log(body,"유저가입");
         if(id === "") {
             setIdError("계정이 입력되지 않았습니다.")
         }
@@ -200,13 +200,18 @@ const AdminRegister = () => {
             setCheckPasswordError("확인 비밀번호가 입력되지 않았습니다.")
             return;
         }
-        dispatch(registerUser(body)).then(response => {
-            if (response.payload.success) {
-                return navigate('/page/Admin')
-            } else {
-              alert(response.payload.err.errmsg)
-            }
-          })
+        if (user.userData.isAdmin === true) {
+
+            dispatch(registerUser(body)).then(response => {
+                if (response.payload.success) {
+                    return navigate('/page/Admin')
+                } else {
+                    alert(response.payload.err.errmsg)
+                }
+            })
+        } else {
+            alert("권한이 없습니다")
+        }
         
     }
 

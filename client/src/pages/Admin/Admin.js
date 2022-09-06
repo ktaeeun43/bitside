@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import AdminLayout from "../../templates/AdminLayout";
-
+import Auth from "../../hoc/auth";
 function Admin() {
   const location = useLocation();
   const focus = location.pathname.split("/Admin/")[1];
@@ -12,11 +12,11 @@ function Admin() {
       <Outlet />
       {focus ? null : 
       <AdminLayout>
-      <div>d1d23</div>
+      <h1>Admin</h1>
       </AdminLayout>} 
       
     </>
   );
 }
 
-export default Admin;
+export default Auth(Admin,true);

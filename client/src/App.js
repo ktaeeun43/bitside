@@ -38,15 +38,22 @@ import Menu2 from "./pages/securityCheck/Menu2";
 import Menu3 from "./pages/securityCheck/Menu3";
 import AdminManagement from "./pages/Admin/AdminManagement";
 import AdminRegister from "./pages/Admin/AdminRegister";
+import LoginPage from "./pages/LoginPage";
+import Auth from "./hoc/auth";
+import AdminAnouncement from "./pages/Admin/AdminAnouncement";
 
 function App() {
+
+
   return (
     <RecoilRoot>
       <BrowserRouter>
         <Nav />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route
+          
             path="/page/PolicyManagement" element={<PolicyManagement />}>
               <Route path="protect" element={<Protect/>} />
             </Route>
@@ -79,6 +86,7 @@ function App() {
           <Route path="/page/Admin" element={<Admin />}>
           <Route path="register" element={<AdminRegister/>} />
             <Route path="userManagement" element={<AdminManagement/>} />
+            <Route path="anouncement" element={<AdminAnouncement />} />
           </Route>
           <Route path="/page/UserUpdate" element={<UserUpdate />}></Route>
         </Routes>

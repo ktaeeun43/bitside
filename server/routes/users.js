@@ -11,7 +11,7 @@ const { auth } = require("../middleware/auth");
 router.get("/auth", auth, (req, res) => {
     res.status(200).json({
         _id: req.user._id,
-        isAdmin: req.user.role === 0 ? false : true,
+        isAdmin: req.user.role === 0 ? true : false,
         isAuth: true,
         email: req.user.email,
         name: req.user.name,
@@ -22,9 +22,9 @@ router.get("/auth", auth, (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-
     const user = new User(req.body);
-
+    console.log(req.body.writer,"등록")
+    
     user.save((err, doc) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).json({
@@ -33,9 +33,24 @@ router.post("/register", (req, res) => {
     });
 });
 
+router.post("/delete", (req, res) => {
+    console.log(req.body.id,"삭제")
+
+    User.deleteOne({ _id: req.body.id }, (err, user) => {
+        if (!user)
+            return res.json({
+                DeleteSuccess: false,
+                message: "Delete failed,  user not found"
+            });
+        return res.status(200).json({
+                success: true
+            });
+    });
+});
+
 
 router.get("/getUsers", (req, res) => {
-    //비디오 정보 불러와서 클라이언트와 통신
+    //유저 정보 불러와서 클라이언트 리스트 출력
     User.find()
       .exec((err, users) => {
         if (err) return res.status(400).send(err);
@@ -64,7 +79,7 @@ router.post("/login", (req, res) => {
                     .cookie("w_auth", user.token)
                     .status(200)
                     .json({
-                        loginSuccess: true, userId: user.name
+                        loginSuccess: true, userId: user._id, userName: user.name
                     });
             });
         });

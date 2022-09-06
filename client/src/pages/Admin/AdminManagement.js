@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../templates/AdminLayout";
 import styled from "styled-components";
+import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const TableCell = styled.td`
   display: flex;
@@ -51,6 +54,9 @@ const Table = styled.div`
 
 const AdminManagement = () => {
   const [users, setUsers] = useState([]);
+  const [id, setid] = useState('');
+  const user = useSelector((state) => state.User);
+  const navigate = useNavigate();
   useEffect(() => {
     //기존의 landingPage에 있는 코드 재사용
     axios.get("/api/users/getUsers").then((response) => {
@@ -61,7 +67,24 @@ const AdminManagement = () => {
       }
     });
   }, []);
-  console.log(users, "사용자");
+  const onDelete =(e) => {
+    
+    e.preventDefault();
+    setid(e.target.value)
+    let body ={
+      id : e.target.value
+    }
+    axios.post("/api/users/delete", body).then((response) => {
+      if (response.data.success) {
+        alert("유저 삭제 성공!");
+        navigate("/page/Admin")
+      } else {
+        alert("유저 삭제제 실패!");
+      }
+    });
+
+  }
+
 
   return (
     <>
@@ -82,7 +105,7 @@ const AdminManagement = () => {
             {users.map((user) => {
               return (
                 <>
-                  <StyledTableRow>
+                  <StyledTableRow key={user._id}>
                     <TableCell>
                       <StyledTableCellValue>{user.email}</StyledTableCellValue>
                       <StyledTableCellValue>{user.name}</StyledTableCellValue>
@@ -91,6 +114,7 @@ const AdminManagement = () => {
                         {user.department}
                       </StyledTableCellValue>
                       <StyledTableCellValue>{user.role}</StyledTableCellValue>
+                      <Button variant="contained" value={user._id} onClick={onDelete}>삭제</Button>
                     </TableCell>
                   </StyledTableRow>
                 </>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
+import Auth from "../../hoc/auth";
 
 function DocumentsManagement() {
   const location = useLocation();
@@ -19,4 +20,4 @@ function DocumentsManagement() {
   );
 }
 
-export default DocumentsManagement;
+export default Auth(DocumentsManagement,true);
