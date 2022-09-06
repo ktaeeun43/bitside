@@ -11,7 +11,11 @@ function PolicyManagement() {
       <Outlet />
       {focus ? null :
         <PolicyManagementLayout>
-        <div>PolicyManagement</div>
+          <h1>정책 업로드</h1>
+          <form encType='multipart/form-data'>
+            <input type='file' name='file' />
+            <button type='submit'>업로드</button>
+        </form>
         </PolicyManagementLayout>}
 
     </>

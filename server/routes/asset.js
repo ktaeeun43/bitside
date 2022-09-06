@@ -1,24 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const { Anouncement } = require("../models/Anouncement");
+const { Asset } = require("../models/Asset");
 
 const { auth } = require("../middleware/auth");
 
 
 
-router.get("/getAnouncements", (req, res) => {
-  Anouncement.find()
-  .exec((err, anouncements) => {
+router.get("/getAsset", (req, res) => {
+    Asset.find()
+  .exec((err, asset) => {
     if (err) return res.status(400).send(err);
-    res.status(200).json({ success: true, anouncements });
+    res.status(200).json({ success: true, asset });
   });
 });
 
 
 router.post("/upload", (req, res) => {
-  const anouncement = new Anouncement(req.body);
-  console.log(anouncement);
-  anouncement.save((err, doc) => {
+  const asset = new Asset(req.body);
+  
+  asset.save((err, doc) => {
       if (err) return res.json({ success: false, err });
       return res.status(200).json({
           success: true

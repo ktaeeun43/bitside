@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Video } = require("../models/Video");
+const { File } = require("../models/File");
 const { Subscriber } = require("../models/Subscriber");
 
 const multer = require("multer");
@@ -20,11 +20,6 @@ let storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   // mime type 체크하여 원하는 타입만 필터링
 
-  if (file.mimetype == "video/mp4") {
-    cb(null, true);
-  } else {
-    cb({ msg: "mp4 파일만 업로드 가능합니다." }, false);
-  }
 };
 
 let upload = multer({ storage: storage, fileFilter: fileFilter }).single(
@@ -36,7 +31,7 @@ let upload = multer({ storage: storage, fileFilter: fileFilter }).single(
 //=================================
 
 router.post("/uploads", (req, res) => {
-  // 비디오를 서버에 저장한다.
+  //    문서를 서버에 저장한다.
   //   console.log("비디오 req");
   //   console.log(req);
 

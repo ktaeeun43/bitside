@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const videoSchema = mongoose.Schema(
+const fileSchema = mongoose.Schema(
   {
     writer: {
       type: Schema.Types.ObjectId,
@@ -14,27 +14,17 @@ const videoSchema = mongoose.Schema(
     description: {
       type: String,
     },
-    privacy: {
-      type: Number,
-    },
     filePath: {
       type: String,
     },
     catogory: String,
-    views: {
-      type: Number,
-      default: 0,
-    },
-    duration: {
-      type: String,
-    },
-    thumbnail: {
+    type: {
       type: String,
     },
   },
   { timestamps: true }
 );
 
-const Video = mongoose.model("Video", videoSchema);
+const File = mongoose.model("File", fileSchema);
 
-module.exports = { Video };
+module.exports = { File };

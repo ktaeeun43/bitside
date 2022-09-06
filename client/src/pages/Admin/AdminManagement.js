@@ -58,7 +58,6 @@ const AdminManagement = () => {
   const user = useSelector((state) => state.User);
   const navigate = useNavigate();
   useEffect(() => {
-    //기존의 landingPage에 있는 코드 재사용
     axios.get("/api/users/getUsers").then((response) => {
       if (response.data.success) {
         setUsers(response.data.users);

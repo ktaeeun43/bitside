@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import AssetManagementLayout from "../../templates/AssetManagementLayout"; 
 import Auth from "../../hoc/auth";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const RegisterWrapper = styled.div`
 width: 100%;
@@ -106,6 +108,8 @@ justify-content: center;
 function AssetManagement() {
 
   const location = useLocation();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.User);
   const focus = location.pathname.split("/AssetManagement/")[1];
 
   const [code, setCode] = useState("");
@@ -169,6 +173,35 @@ function AssetManagement() {
   function onChangeLevel(event) {
     setLevel(event.target.value);
   }
+  function onsubmit(event) {
+    let body = {
+      writer: user.userData._id,
+      status: production,
+      type: type,
+      assetcode: code,
+      hostname:host,
+      version: version,
+      IPadress: ip,
+      usetype: purpose,
+      location: position,
+      employee: manager,
+      level: level,
+      trouble: risk,
+
+    }
+    axios.post(`/api/asset/upload`,body)
+        .then((response) => {
+          if (response.data.success) {
+            alert("자산이 등록되었습니다.")
+            setTimeout(() => {
+              navigate('/page/AssetManagement/list')
+            }, 1000);
+          } else {
+            alert("자산 등록 실패");
+          }
+        });
+    console.log(body,"자산목록")
+  }
 
   return (
     <>
@@ -193,8 +226,8 @@ function AssetManagement() {
              label=""
              onChange={onChangeProduction}
              >
-          <MenuItem value={1}>운용</MenuItem>
-          <MenuItem value={2}>테스트</MenuItem>
+          <MenuItem value={"운용"}>운용</MenuItem>
+          <MenuItem value={"테스트"}>테스트</MenuItem>
           </Select>
           </InputWrapper>
           <InputWrapper>
@@ -206,10 +239,10 @@ function AssetManagement() {
              label=""
              onChange={onChangeType}
              >
-          <MenuItem value={1}>windows</MenuItem>
-          <MenuItem value={2}>linux</MenuItem>
-          <MenuItem value={3}>mac</MenuItem>
-          <MenuItem value={4}>기타</MenuItem>
+          <MenuItem value={"windows"}>windows</MenuItem>
+          <MenuItem value={"linux"}>linux</MenuItem>
+          <MenuItem value={"mac"}>mac</MenuItem>
+          <MenuItem value={"기타"}>기타</MenuItem>
           </Select>
           </InputWrapper>
           <InputWrapper>
@@ -284,9 +317,9 @@ function AssetManagement() {
              label=""
              onChange={onChangeLevel}
              >
-          <MenuItem value={1}>L</MenuItem>
-          <MenuItem value={2}>H</MenuItem>
-          <MenuItem value={3}>M</MenuItem>
+          <MenuItem value={"L"}>L</MenuItem>
+          <MenuItem value={"H"}>H</MenuItem>
+          <MenuItem value={"M"}>M</MenuItem>
           </Select>
           </InputWrapper>
           <InputWrapper>
@@ -310,7 +343,7 @@ function AssetManagement() {
           </RegisterInputWrapper>
           </Wrapper>
           <InBoxWrapper>
-          <Button>등록하기</Button>
+          <Button onClick={onsubmit}>등록하기</Button>
           </InBoxWrapper>
         </BoxWrapper>
 

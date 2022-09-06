@@ -39,11 +39,12 @@ function AdminAnouncement() {
   };
   const onSubmit = () => {
     let body ={
-      write: user.userData._id,
+      writer: user.userData._id,
       title: title,
       type: type,
       content: content,
     }
+    console.log(body,"공지");
     axios.post(`/api/anouncement/upload`,body)
         .then((response) => {
           if (response.data.success) {
