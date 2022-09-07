@@ -85,6 +85,8 @@ const InputWrapper = styled.div`
 `;
 
 const InBoxWrapper = styled.div`
+padding: 30px;
+display:flex;
 justify-content: center;
 `;
 
@@ -217,6 +219,7 @@ function SecurityPlanUpload() {
           <InBoxWrapper>
           <Button>등록하기</Button>
           </InBoxWrapper>
+          
         </BoxWrapper>
     </>
   )

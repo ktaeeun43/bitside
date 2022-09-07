@@ -85,6 +85,8 @@ const InputWrapper = styled.div`
 `;
 
 const InBoxWrapper = styled.div`
+padding: 30px;
+display:flex;
 justify-content: center;
 `;
 
