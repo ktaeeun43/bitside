@@ -84,7 +84,7 @@ const AssetNetWork = (props) => {
   return (
     <AssetManagementLayout>
       <h1>네트워크 구성도</h1>
-       {image ? <img src={`http://localhost:5000/${image}`} /> :
+       {image ? <img src={`http://localhost:5001/${image}`} /> :
        <>
       <Dropzone accept="image/*" onDrop={onDrop} multiple={false}>
             {({ getRootProps, getInputProps }) => (
