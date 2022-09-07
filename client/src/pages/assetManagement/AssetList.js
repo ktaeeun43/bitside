@@ -65,10 +65,13 @@ const StyledTableCellTitle = styled.div`
 const StyledTableCellValue = styled.div`
 display: flex;
 align-items: center;
-background-color: white;
 flex: 0 0 4.8rem;
-padding: 1rem 1rem;
-word-break: keep-all;
+  padding: 1rem 1rem;
+  word-break: keep-all;
+`;
+
+const TableInCell = styled.td`
+  display: flex;
 `;
 
 
@@ -113,7 +116,7 @@ const AssetList = () => {
               return (
                 <>
                   <StyledTableRow key={asset._id}>
-                    <TableCell>
+                    <TableInCell>
                       <StyledTableCellValue>{idx}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.status}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.type}</StyledTableCellValue>
@@ -125,7 +128,7 @@ const AssetList = () => {
                       <StyledTableCellValue>{asset.location}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.employee}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.level}</StyledTableCellValue>
-                    </TableCell>
+                    </TableInCell>
                   </StyledTableRow>
                 </>
               );
