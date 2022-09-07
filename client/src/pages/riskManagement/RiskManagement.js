@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
 import Auth from "../../hoc/auth";
+import Risk from "./Risk";
 
 function RiskManegement() {
   const location = useLocation();
@@ -13,7 +14,8 @@ function RiskManegement() {
       <Outlet />
       {focus ? null :
       <RiskManagementLayout>
-        <div>RiskManagement</div>
+        <Risk />
+
       </RiskManagementLayout>}
     </>
   );

@@ -165,13 +165,16 @@ const RightSideLink = styled.div`
     background-color: ${COLOR_WHITE};
     color: ${COLOR_BRAND};
     text-decoration: none;
+
   }
 `;
 const RightSideTime = styled.div`
   margin-left: 20px;
+  margin-right: 10px;
   font-size: 0.9375rem;
   color: ${COLOR_WHITE};
   cursor: pointer;
+
 `;
 const RightSideAppLink = styled.div`
   margin-left: 20px;
@@ -254,7 +257,7 @@ function Nav() {
     })
   }
 
-  console.log(day, "dday")
+  console.log(dday, "dday")
 
   return (
     <>
@@ -278,7 +281,7 @@ function Nav() {
           </LeftSide>
           <RightSide>
 
-            <RightSideTime>심사까지 D{day}</RightSideTime>
+            <RightSideTime>심사까지 D {day}&nbsp;</RightSideTime>
             {navRightList.map(({ title, path }) => {
               return (
                 <Link style={{ textDecoration: "none" }} to={`/page/${path}`}>
