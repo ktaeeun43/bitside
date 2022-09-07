@@ -43,7 +43,12 @@ const NotiWrapper = styled.div`
   border: 1px solid rgb(230, 230, 230);
   padding: ${(props) => (props.isMobile ? "1.1875rem" : "40px 20px")};
   overflow: auto;
-`;
+  `;
+  const MidInputsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  `;
 
 const TopContainer = styled.div`
   display: flex;
@@ -70,11 +75,6 @@ const TopWelcome = styled.div`
   font-size: 12px;
 `;
 
-const MidInputsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-`;
 
 const InputContainer = styled.div`
   display: flex;

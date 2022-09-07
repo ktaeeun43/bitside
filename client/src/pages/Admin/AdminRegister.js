@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { registerUser } from "../../_actions/user_actions";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const RegisterWrapper = styled.div`
 width: 100%;
@@ -115,7 +116,6 @@ const AdminRegister = (props) => {
     const [phoneNumberError, setphoneNumberError] = useState("");
     const [role, setRole] = useState('');
     const user = useSelector((state) => state.User);
-    console.log(user,"로그인유저");
     function onChangeRole(event) {
         setRole(event.target.value);
     }
@@ -180,8 +180,19 @@ const AdminRegister = (props) => {
             phoneNumber: phoneNumber,
             password: password
         }
-
-        
+        let body2 = {
+            email: id,
+            name: name,
+            department: department,
+            role: role,
+            phoneNumber: phoneNumber,
+        }
+        let content = JSON.stringify(body2)
+        let body3 = {
+            writer: user.userData._id,
+            content: content,
+            action: "회원가입",
+        }
         if(id === "") {
             setIdError("계정이 입력되지 않았습니다.")
         }
@@ -204,6 +215,13 @@ const AdminRegister = (props) => {
 
             dispatch(registerUser(body)).then(response => {
                 if (response.payload.success) {
+                    axios.post(`/api/log/saveLog`,body3)
+                    .then((response) => {
+                    if (response.data.success) {
+                        console.log("회원가입기록")
+                      } else {
+                      }
+                    });
                     return navigate('/page/Admin')
                 } else {
                     alert(response.payload.err.errmsg)

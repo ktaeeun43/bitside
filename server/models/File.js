@@ -17,7 +17,6 @@ const fileSchema = mongoose.Schema(
     filePath: {
       type: String,
     },
-    catogory: String,
     type: {
       type: String,
     },

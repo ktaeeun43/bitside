@@ -73,10 +73,24 @@ const AdminManagement = () => {
     let body ={
       id : e.target.value
     }
+    let content = JSON.stringify(body)
+    let body2 ={
+      writer: user.userData._id,
+      action: "회원삭제",
+      content: content
+    }
     axios.post("/api/users/delete", body).then((response) => {
       if (response.data.success) {
+        console.log("삭제성공")
+        axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      console.log("삭제",body2)
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
         alert("유저 삭제 성공!");
-        navigate("/page/Admin")
+         navigate("/page/Admin")
       } else {
         alert("유저 삭제제 실패!");
       }
