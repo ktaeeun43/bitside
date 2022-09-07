@@ -198,7 +198,7 @@ function Risk() {
           <InputLabel>가용성</InputLabel>
           <Input 
             type={"input"}
-            placeholder="IP를 입력해주세요."
+            placeholder="가용성 입력해주세요."
             onChange={onChangeAvailability}
             value={availability}
             />
@@ -207,7 +207,7 @@ function Risk() {
           <InputLabel>위험등급</InputLabel>
           <Input 
             type={"input"}
-            placeholder="용도를 입력해주세요."
+            placeholder="위험등급을 입력해주세요."
             onChange={onChangeRiskLevel}
             value={riskLevel}
             />

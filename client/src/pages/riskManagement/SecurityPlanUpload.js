@@ -144,7 +144,7 @@ function SecurityPlanUpload() {
           <InputLabel>통제영역</InputLabel>
           <Input 
             type={"input"}
-            placeholder="코드를 입력해주세요."
+            placeholder="통제영역을 입력해주세요."
             onChange={onChangeControl}
             value={control}
             />
@@ -153,7 +153,7 @@ function SecurityPlanUpload() {
           <InputLabel>위험내용</InputLabel>
           <Input 
             type={"input"}
-            placeholder="대분류를 입력해주세요."
+            placeholder="위험내용을 입력해주세요."
             onChange={onChangeRiskContent}
             value={riskContents}
             />
@@ -162,7 +162,7 @@ function SecurityPlanUpload() {
           <InputLabel>위험도</InputLabel>
           <Input 
             type={"input"}
-            placeholder="중분류를 입력해주세요."
+            placeholder="위험도를 입력해주세요."
             onChange={onChangeRiskLevel}
             value={riskLevel}
             />
@@ -171,7 +171,7 @@ function SecurityPlanUpload() {
           <InputLabel>보호대책</InputLabel>
           <Input 
             type={"input"}
-            placeholder="위협내용을 입력해주세요."
+            placeholder="보호대책을 입력해주세요."
             onChange={onChangeProtection}
             value={protection}
             />
@@ -180,7 +180,7 @@ function SecurityPlanUpload() {
           <InputLabel>시급성</InputLabel>
           <Input 
             type={"input"}
-            placeholder="기밀성을 입력해주세요."
+            placeholder="시급성을 입력해주세요."
             onChange={onChangeUrgency}
             value={urgency}
             />
@@ -189,7 +189,7 @@ function SecurityPlanUpload() {
           <InputLabel>구현비용</InputLabel>
           <Input 
             type={"input"}
-            placeholder="무결성을 입력해주세요."
+            placeholder="구현비용을 입력해주세요."
             onChange={onChangeCost}
             value={cost}
             />
@@ -198,7 +198,7 @@ function SecurityPlanUpload() {
           <InputLabel>구현난이도</InputLabel>
           <Input 
             type={"input"}
-            placeholder="IP를 입력해주세요."
+            placeholder="구현난이도를 입력해주세요."
             onChange={onChangeDifficulty}
             value={difficulty}
             />
@@ -207,7 +207,7 @@ function SecurityPlanUpload() {
           <InputLabel>우선순위</InputLabel>
           <Input 
             type={"input"}
-            placeholder="용도를 입력해주세요."
+            placeholder="우선순위를 입력해주세요."
             onChange={onChangePriority}
             value={priority}
             />

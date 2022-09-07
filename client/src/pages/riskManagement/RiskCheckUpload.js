@@ -144,7 +144,7 @@ function RiskCheckUpload() {
           <InputLabel>자산그룹</InputLabel>
           <Input 
             type={"input"}
-            placeholder="코드를 입력해주세요."
+            placeholder="자산그룹을 입력해주세요."
             onChange={onChangeGroup}
             value={group}
             />
@@ -153,7 +153,7 @@ function RiskCheckUpload() {
           <InputLabel>자산등급</InputLabel>
           <Input 
             type={"input"}
-            placeholder="대분류를 입력해주세요."
+            placeholder="자산등급을 입력해주세요."
             onChange={onChangeAssetGrade}
             value={assetGrade}
             />
@@ -162,7 +162,7 @@ function RiskCheckUpload() {
           <InputLabel>점검항목</InputLabel>
           <Input 
             type={"input"}
-            placeholder="중분류를 입력해주세요."
+            placeholder="점검항목을 입력해주세요."
             onChange={onChangeCheck}
             value={check}
             />
@@ -171,7 +171,7 @@ function RiskCheckUpload() {
           <InputLabel>항목명</InputLabel>
           <Input 
             type={"input"}
-            placeholder="위협내용을 입력해주세요."
+            placeholder="항목명을 입력해주세요."
             onChange={onChangeItemName}
             value={itemName}
             />
@@ -180,7 +180,7 @@ function RiskCheckUpload() {
           <InputLabel>취약성등급</InputLabel>
           <Input 
             type={"input"}
-            placeholder="기밀성을 입력해주세요."
+            placeholder="취약성등급을 입력해주세요."
             onChange={onChangeVulnerability}
             value={vulnerability}
             />
@@ -189,7 +189,7 @@ function RiskCheckUpload() {
           <InputLabel>위협코드</InputLabel>
           <Input 
             type={"input"}
-            placeholder="무결성을 입력해주세요."
+            placeholder="위협코드를 입력해주세요."
             onChange={onChangeRiskCode}
             value={riskCode}
             />
@@ -198,7 +198,7 @@ function RiskCheckUpload() {
           <InputLabel>위협내용</InputLabel>
           <Input 
             type={"input"}
-            placeholder="IP를 입력해주세요."
+            placeholder="위협내용을 입력해주세요."
             onChange={onChangeRiskContent}
             value={riskContents}
             />
@@ -207,7 +207,7 @@ function RiskCheckUpload() {
           <InputLabel>위협등급</InputLabel>
           <Input 
             type={"input"}
-            placeholder="용도를 입력해주세요."
+            placeholder="위협등급을 입력해주세요."
             onChange={onChangeRiskLevel}
             value={riskLevel}
             />
@@ -216,7 +216,7 @@ function RiskCheckUpload() {
           <InputLabel>위협내용</InputLabel>
           <Input 
             type={"input"}
-            placeholder="용도를 입력해주세요."
+            placeholder="위협내용을 입력해주세요."
             onChange={onChangeRiskContent}
             value={riskContents}
             />
@@ -225,7 +225,7 @@ function RiskCheckUpload() {
           <InputLabel>위험도</InputLabel>
           <Input 
             type={"input"}
-            placeholder="용도를 입력해주세요."
+            placeholder="위험도를 입력해주세요."
             onChange={onChangeRiskLevel}
             value={riskLevel}
             />

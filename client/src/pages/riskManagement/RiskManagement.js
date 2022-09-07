@@ -5,7 +5,37 @@ import Auth from "../../hoc/auth";
 import Risk from "./Risk";
 import RiskCheckUpload from "./RiskCheckUpload";
 import SecurityPlanUpload from "./SecurityPlanUpload";
+import styled from "styled-components";
+import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 
+  
+const Button = styled.div`
+
+width: 300px;
+display: flex;
+-webkit-box-align: center;
+align-items: center;
+-webkit-box-pack: center;
+justify-content: center;
+padding: 0.3rem 0.875rem;
+color: ${COLOR_WHITE};
+font-size: 0.875rem;
+background-color: ${COLOR_ABLE_BUTTON};
+cursor: pointer;
+border-radius: 4px;
+word-break: keep-all;
+margin: 10px
+`;
+const TitleWrapper = styled.div`
+ display: flex;
+ display: -webkit-box;
+ -webkit-box-orient: horizental;
+ justify-content: center;
+ align-items: center;
+ flex-direction: row;
+
+ margin: 10px;
+`;
 function RiskManegement() {
   const location = useLocation();
   const focus = location.pathname.split("/RiskManagement/")[1];
@@ -13,12 +43,22 @@ function RiskManegement() {
   const [isRiskCheckUpload, setIsRiskCheckUpload] = useState(false);
   const [isSecurityPlanUpload, setIsSecurityPlanUpload] = useState(false);
 
-  const changeRisk = () => {
-    setIsRisk((check) => !check);
+  const onChangeRisk = () => {
+    setIsRisk(true);
+    setIsRiskCheckUpload(false);
+    setIsSecurityPlanUpload(false);
   };
   
-  const changeRiskCheck = () => {
-    setIsRiskCheckUpload((check) => !check);
+  const onChangeRiskCheck = () => {
+    setIsRisk(false);
+    setIsRiskCheckUpload(true);
+    setIsSecurityPlanUpload(false);
+  }
+
+  const onChangeSecurityPlan = () => {
+    setIsRisk(false);
+    setIsRiskCheckUpload(false);
+    setIsSecurityPlanUpload(true);
   }
   
   return (
@@ -26,10 +66,14 @@ function RiskManegement() {
       <Outlet />
       {focus ? null :
       <RiskManagementLayout>
-        <button onClick={changeRisk}>선택하기</button> 
+        <TitleWrapper>
+        <Button onClick={onChangeRisk}>위협분석</Button> 
+        <Button onClick={onChangeRiskCheck}>위협평가</Button>
+         <Button onClick={onChangeSecurityPlan}>정보보호계획</Button> 
+        </TitleWrapper>
         {isRisk && <Risk />} 
-        <RiskCheckUpload/>
-        <SecurityPlanUpload />
+        {isRiskCheckUpload && <RiskCheckUpload/>} 
+        {isSecurityPlanUpload && <SecurityPlanUpload />} 
       </RiskManagementLayout>}
     </>
   );
