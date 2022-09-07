@@ -121,7 +121,7 @@ const StyledTableCellTitle = styled.div`
 `;
 
 
-function DocumentTraces() {
+function DocumentWrite() {
 
   const [index, setIndex ] = useState("");
   const [area, setArea] = useState("");
@@ -163,24 +163,81 @@ function DocumentTraces() {
 
   return (
     <>
-      <DocumentManagementLayout>
-      <Table>
-        <Title></Title>
-        </Table>
-        <StyledTableRow>
-          <TableCell>
-            <StyledTableCellTitle>No</StyledTableCellTitle>
-            <StyledTableCellTitle>영역구분</StyledTableCellTitle>
-            <StyledTableCellTitle>증적코드</StyledTableCellTitle>
-            <StyledTableCellTitle>증적명</StyledTableCellTitle>
-            <StyledTableCellTitle>이행주기</StyledTableCellTitle>
-            <StyledTableCellTitle>담당자</StyledTableCellTitle>
-            <StyledTableCellTitle>최근 업로드</StyledTableCellTitle>
-          </TableCell>
-        </StyledTableRow>
-        
-      </DocumentManagementLayout>
+
+          
+        <BoxWrapper>
+          <Wrapper>
+          <TitleWrapper>
+            <BoxTitle>증적목록 등록</BoxTitle>
+          </TitleWrapper>
+          <RegisterInputWrapper>
+          <InputWrapper>
+          <InputLabel>No</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="No을 입력해주세요."
+            onChange={onChangeIndex}
+            value={index}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>영역구분</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="영역구분을 입력해주세요."
+            onChange={onChangeArea}
+            value={area}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>증적명</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="증적명을 입력해주세요."
+            onChange={onChangeItemName}
+            value={itemName}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>이행주기</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="이행주기를 입력해주세요."
+            onChange={onChangeCycle}
+            value={cycle}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>담당자</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="담당자를 입력해주세요."
+            onChange={onChangeManager}
+            value={manager}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>최근 업로드</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="최근 업로드를 입력해주세요."
+            onChange={onChangeUpload}
+            value={upload}
+            />
+          </InputWrapper> 
+          </RegisterInputWrapper>
+          </Wrapper>
+          <h3>증적자료 업로드</h3>
+          <form encType='multipart/form-data'>
+            <input type='file' name='file' />
+            <button type='submit'>업로드</button>
+        </form>
+          <InBoxWrapper>
+            
+          <Button>등록하기</Button>
+          </InBoxWrapper>
+        </BoxWrapper>
     </>
   );
 };
-export default DocumentTraces;
+export default DocumentWrite;

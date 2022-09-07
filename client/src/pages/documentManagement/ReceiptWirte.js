@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 
@@ -121,10 +120,8 @@ const StyledTableCellTitle = styled.div`
   word-break: keep-all;
 `;
 
-const Receipt = () => {
-
-
-  const [index, setIndex] = useState("");
+function ReceiptWirte() {
+    const [index, setIndex] = useState("");
   const [controlItem, setControlItem] = useState("");
   const [content, setContent] = useState("");
   const [operation, setOperation] = useState("");
@@ -160,28 +157,83 @@ const Receipt = () => {
     setRecord(event.target.value);
   }
 
-
-
   return (
-    <>
-      <DocumentManagementLayout>
-      <Table>
-        <Title></Title>
-        </Table>
-        <StyledTableRow>
-          <TableCell>
-            <StyledTableCellTitle>번호</StyledTableCellTitle>
-            <StyledTableCellTitle>통제항목</StyledTableCellTitle>
-            <StyledTableCellTitle>상세내용</StyledTableCellTitle>
-            <StyledTableCellTitle>운영여부</StyledTableCellTitle>
-            <StyledTableCellTitle>운영현황 (또는 미선택사유)</StyledTableCellTitle>
-            <StyledTableCellTitle>관련문서 (정책,지침 등 세부조항번호까지)</StyledTableCellTitle>
-            <StyledTableCellTitle>기록 (증적자료)</StyledTableCellTitle>
-          </TableCell>
-        </StyledTableRow>
-        
-      </DocumentManagementLayout>
-    </>
-  );
-};
-export default Receipt;
+    <BoxWrapper>
+          <Wrapper>
+          <TitleWrapper>
+            <BoxTitle>운영명세서 등록</BoxTitle>
+          </TitleWrapper>
+          <RegisterInputWrapper>
+          <InputWrapper>
+          <InputLabel>번호</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="번호를 입력해주세요."
+            onChange={onChangeIndex}
+            value={index}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>통제항목</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="통제항목을 입력해주세요."
+            onChange={onChangeControlItem}
+            value={controlItem}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>상세내용</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="상세내용을 입력해주세요."
+            onChange={onChangeContent}
+            value={content}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>운영여부</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="운영여부를 입력해주세요."
+            onChange={onChangeOperation}
+            value={operation}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>운영현황</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="운영현황을 입력해주세요."
+            onChange={onChangeStatus}
+            value={status}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>관련문서</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="관련문서를 입력해주세요."
+            onChange={onChangeDocument}
+            value={document}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>기록</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="기록을 입력해주세요."
+            onChange={onChangeRecord}
+            value={record}
+            />
+          </InputWrapper>  
+          </RegisterInputWrapper>
+          </Wrapper>
+          <InBoxWrapper>
+          <Button>등록하기</Button>
+          </InBoxWrapper>
+        </BoxWrapper>
+  )
+}
+
+export default ReceiptWirte
