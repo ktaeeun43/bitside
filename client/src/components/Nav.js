@@ -257,8 +257,6 @@ function Nav() {
     })
   }
 
-  console.log(dday, "dday")
-
   return (
     <>
       <NavContainer>

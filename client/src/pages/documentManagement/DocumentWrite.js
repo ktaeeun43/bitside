@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 const Wrapper = styled.div`
@@ -123,6 +126,7 @@ const StyledTableCellTitle = styled.div`
 
 function DocumentWrite() {
 
+  const [파일경로, set파일경로] = useState("");
   const [index, setIndex ] = useState("");
   const [area, setArea] = useState("");
   const [code, setCode] = useState("");
@@ -130,7 +134,8 @@ function DocumentWrite() {
   const [manager, setManager] = useState("");
   const [upload, setUpload] = useState("");
   const [itemName, setItemName] = useState("");
-
+  const user = useSelector((state) => state.User);
+  const navigate = useNavigate();
   function onChangeIndex(event) {
     setIndex(event.target.value);
   }
@@ -159,7 +164,48 @@ function DocumentWrite() {
     setUpload(event.target.value);
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const variables = {
+      writer: user.userData._id,
+      title: "증적자료",
+      filePath: 파일경로,
+    };
 
+    axios.post("/api/document/uploadDocument", variables).then((response) => {
+      if (response.data.success) {
+        setTimeout(() => {
+          
+          return navigate('/page/DocumentsManagement/list')
+        }, 2000);
+      } else {
+        alert("비디오 업로드 실패");
+      }
+    });
+  };
+
+  const uploadDocument = (e) => {
+        e.preventDefault();   
+      	const formData = new FormData();
+      	formData.append('file', e.target.file.files[0]);
+        console.log(formData,"증적자료");
+        const config = {
+          header: {  "content-type": "multipart/form-data", },
+        };
+        axios.post("/api/document/upload", formData, config).then((response) => {
+          console.log(response.data);
+          if (response.data.success) {
+            let variable = {
+              filePath: response.data.url,
+              fileName: response.data.fileName,
+            };
+            set파일경로(variable.filePath);
+            alert("증적자료 업로드에 성공하였습니다.");
+          } else {
+            alert("비디오 업로드에 실패하였습니다.");
+          }
+        });
+    };
 
   return (
     <>
@@ -228,13 +274,13 @@ function DocumentWrite() {
           </RegisterInputWrapper>
           </Wrapper>
           <h3>증적자료 업로드</h3>
-          <form encType='multipart/form-data'>
+          <form encType='multipart/form-data' onSubmit={uploadDocument}>
             <input type='file' name='file' />
             <button type='submit'>업로드</button>
         </form>
           <InBoxWrapper>
             
-          <Button>등록하기</Button>
+          <Button onClick={onSubmit}>등록하기</Button>
           </InBoxWrapper>
         </BoxWrapper>
     </>

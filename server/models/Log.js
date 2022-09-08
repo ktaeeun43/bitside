@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const logSchema = mongoose.Schema(
   {
-    NUM :{
+    No :{
       type: Number,
     },
     writer: {
@@ -21,6 +21,6 @@ const logSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-logSchema.plugin(AutoIncrement, { inc_field: "NUM" }); 
+logSchema.plugin(AutoIncrement, { inc_field: "No" }); 
 const Log = mongoose.model("Log", logSchema);
 module.exports = { Log };

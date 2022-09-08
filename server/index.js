@@ -37,6 +37,8 @@ app.use(cookieParser());
 app.get("/api/hello", (req, res) => res.send("Hello Bitvelo!"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/file", require("./routes/file"));
+app.use("/api/document", require("./routes/document"));
+app.use("/api/policy", require("./routes/policy"));
 app.use("/api/subscribe", require("./routes/subscribe"));
 app.use("/api/anouncement", require("./routes/anouncement"));
 app.use("/api/asset", require("./routes/asset"));

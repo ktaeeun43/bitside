@@ -114,8 +114,8 @@ const AdminRegister = (props) => {
     const [nameError, setNameError] = useState("");
     const [departmentError, setdepartmentError] = useState("");
     const [phoneNumberError, setphoneNumberError] = useState("");
-    const [role, setRole] = useState('');
     const user = useSelector((state) => state.User);
+    const [role, setRole] = useState('');
     function onChangeRole(event) {
         setRole(event.target.value);
     }
@@ -222,6 +222,7 @@ const AdminRegister = (props) => {
                       } else {
                       }
                     });
+                    alert("유저 등록 성공!");
                     return navigate('/page/Admin')
                 } else {
                     alert(response.payload.err.errmsg)

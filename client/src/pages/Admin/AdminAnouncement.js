@@ -44,10 +44,21 @@ function AdminAnouncement() {
       type: type,
       content: content,
     }
-    console.log(body,"공지");
+    let content2 = JSON.stringify(body);
+    let body2 ={
+      writer: user.userData._id,
+      action: "공지사항 등록",
+      content: content2
+    }
     axios.post(`/api/anouncement/upload`,body)
         .then((response) => {
           if (response.data.success) {
+            axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
             alert("공지사항이 등록되었습니다.")
             setTimeout(() => {
               navigate('/')

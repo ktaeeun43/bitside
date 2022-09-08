@@ -26,8 +26,8 @@ const Button = styled.div`
 const AssetNetWork = (props) => {
   const [파일경로, set파일경로] = useState("");
   const user = useSelector((state) => state.User);
-  const [image, setImage] = useState("");
   const navigate = useNavigate();
+  const [image, setImage] = useState("");
   console.log(user,"로그인 유저")
   useEffect(() => {
     axios.get("/api/file/getNetwork").then((response) => {
@@ -69,14 +69,26 @@ const AssetNetWork = (props) => {
       title: "네트워크 구상도",
       filePath: 파일경로,
     };
-
+    let content2 = JSON.stringify(variables);
+    let body2 ={
+      writer: user.userData._id,
+      action: "자산 목록 등록",
+      content: content2
+    }
     axios.post("/api/file/uploadNetwork", variables).then((response) => {
       if (response.data.success) {
+        axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
+        alert("네트워크 구성도 업로드 성공");
         setTimeout(() => {
           return navigate('/page/AssetManagement')
         }, 2000);
       } else {
-        alert("비디오 업로드 실패");
+        alert("네트워크 구성도 업로드 실패");
       }
     });
   };
