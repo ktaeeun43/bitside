@@ -50,20 +50,30 @@ function PolicyManagement() {
     e.preventDefault();
     const variables = {
       writer: user.userData._id,
-      title: "증적자료",
+      title: "정보정책",
       description: role,
       filePath: 파일경로,
     };
-
+    let content2 = JSON.stringify(variables);
+    let body2 ={
+      writer: user.userData._id,
+      action: "정보정책 등록",
+      content: content2
+    }
     axios.post("/api/policy/uploadPolicy", variables).then((response) => {
       if (response.data.success) {
         setTimeout(() => {
-          
+          axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
           return navigate('/page/PolicyManagement/protect')
         }, 2000);
         alert("정보정책 업로드 성공");
       } else {
-        alert("정책 업로드 실패");
+        alert("정보정책 업로드 실패");
       }
     });
   };
@@ -84,9 +94,9 @@ function PolicyManagement() {
               fileName: response.data.fileName,
             };
             set파일경로(variable.filePath);
-            alert("증적자료 업로드에 성공하였습니다.");
+            alert("정보정책 업로드에 성공하였습니다.");
           } else {
-            alert("비디오 업로드에 실패하였습니다.");
+            alert("정보정책 업로드에 실패하였습니다.");
           }
         });
     };

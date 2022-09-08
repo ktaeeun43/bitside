@@ -1,4 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 
@@ -128,6 +131,8 @@ function ReceiptWirte() {
   const [status, setStatus] = useState("");
   const [document, setDocument] = useState("");
   const [record, setRecord] = useState("");
+  const user = useSelector((state) => state.User);
+  const navigate = useNavigate();
 
   function onChangeIndex(event) {
     setIndex(event.target.value);
@@ -155,6 +160,41 @@ function ReceiptWirte() {
 
   function onChangeRecord(event) {
     setRecord(event.target.value);
+  }
+  function onsubmit(e) {
+    e.preventDefault();
+        let body = {
+          controlItem: controlItem,
+            content: content,
+            operation: operation,
+            status: status,
+            document: document,
+            record: record
+        }
+        let content2 = JSON.stringify(body)
+        let body2 = {
+            writer: user.userData._id,
+            content: content2,
+            action: "운영명세서 등록",
+        }
+        axios.post(`/api/receipt/upload`,body)
+        .then((response) => {
+          if (response.data.success) {
+            axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
+            alert("자산이 등록되었습니다.")
+            setTimeout(() => {
+              navigate('/page/AssetManagement/list')
+            }, 1000);
+          } else {
+            alert("자산 등록 실패");
+          }
+        });
+
   }
 
   return (
@@ -230,7 +270,7 @@ function ReceiptWirte() {
           </RegisterInputWrapper>
           </Wrapper>
           <InBoxWrapper>
-          <Button>등록하기</Button>
+          <Button onClick={onsubmit}>등록하기</Button>
           </InBoxWrapper>
         </BoxWrapper>
   )

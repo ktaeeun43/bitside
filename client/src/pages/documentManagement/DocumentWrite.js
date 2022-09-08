@@ -127,26 +127,18 @@ const StyledTableCellTitle = styled.div`
 function DocumentWrite() {
 
   const [파일경로, set파일경로] = useState("");
-  const [index, setIndex ] = useState("");
   const [area, setArea] = useState("");
-  const [code, setCode] = useState("");
   const [cycle, setCycle] = useState("");
+
   const [manager, setManager] = useState("");
-  const [upload, setUpload] = useState("");
   const [itemName, setItemName] = useState("");
   const user = useSelector((state) => state.User);
   const navigate = useNavigate();
-  function onChangeIndex(event) {
-    setIndex(event.target.value);
-  }
 
   function onChangeArea(event) {
     setArea(event.target.value);
   }
 
-  function onChangeCode(event) {
-    setCode(event.target.value);
-  }
 
   function onChangeItemName(event) {
     setItemName(event.target.value);
@@ -160,26 +152,42 @@ function DocumentWrite() {
     setManager(event.target.value);
   }
 
-  function onChangeUpload(event) {
-    setUpload(event.target.value);
-  }
 
   const onSubmit = (e) => {
     e.preventDefault();
+    let body = {
+      area: area,
+      itemName: itemName,
+      cycle: cycle,
+      manager: manager,
+
+    }
+    let description = JSON.stringify(body)
     const variables = {
       writer: user.userData._id,
       title: "증적자료",
+      description: description,
       filePath: 파일경로,
     };
-
+    let content2 = JSON.stringify(variables);
+    let body2 ={
+      writer: user.userData._id,
+      action: "증적자료 등록",
+      content: content2
+    }
     axios.post("/api/document/uploadDocument", variables).then((response) => {
       if (response.data.success) {
         setTimeout(() => {
-          
+          axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
           return navigate('/page/DocumentsManagement/list')
         }, 2000);
       } else {
-        alert("비디오 업로드 실패");
+        alert("증적자료 업로드 실패");
       }
     });
   };
@@ -218,15 +226,6 @@ function DocumentWrite() {
           </TitleWrapper>
           <RegisterInputWrapper>
           <InputWrapper>
-          <InputLabel>No</InputLabel>
-          <Input 
-            type={"input"}
-            placeholder="No을 입력해주세요."
-            onChange={onChangeIndex}
-            value={index}
-            />
-          </InputWrapper>
-          <InputWrapper>
           <InputLabel>영역구분</InputLabel>
           <Input 
             type={"input"}
@@ -262,15 +261,6 @@ function DocumentWrite() {
             value={manager}
             />
           </InputWrapper>
-          <InputWrapper>
-          <InputLabel>최근 업로드</InputLabel>
-          <Input 
-            type={"input"}
-            placeholder="최근 업로드를 입력해주세요."
-            onChange={onChangeUpload}
-            value={upload}
-            />
-          </InputWrapper> 
           </RegisterInputWrapper>
           </Wrapper>
           <h3>증적자료 업로드</h3>
