@@ -16,6 +16,7 @@ import {
   NAV_HEIGHT,
 } from "../constants";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const NavContainer = styled.nav`
   position: flex;
@@ -244,10 +245,21 @@ function Nav() {
   let dday = new Date(2022,9,9);
   let gap = today.getTime() - dday.getTime();
   const day = Math.floor(gap / (1000 * 60 * 60 * 24));
+  const user = useSelector((state) => state.User);
   let result = Math.ceil( );
+  let body2 ={
+    writer: user.userData._id,
+    action: "로그아웃",
+  }
   const onClickLogOut = () =>{
     axios.get( `/api/users/logout`).then(response => {
        if(response.data.success) {
+        axios.post(`/api/log/saveLog`,body2)
+        .then((response) => {
+          if (response.data.success) {
+          } else {
+          }
+        });
         window.localStorage.setItem("userName" , "");
         return navigate('/login')
        } else {
