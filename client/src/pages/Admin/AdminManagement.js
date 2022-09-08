@@ -84,7 +84,6 @@ const AdminManagement = () => {
         console.log("삭제성공")
         axios.post(`/api/log/saveLog`,body2)
                     .then((response) => {
-                      console.log("삭제",body2)
                       if (response.data.success) {
                       } else {
                       }

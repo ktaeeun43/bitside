@@ -189,9 +189,21 @@ function AssetManagement() {
       trouble: risk,
 
     }
+    let content2 = JSON.stringify(body);
+    let body2 ={
+      writer: user.userData._id,
+      action: "자산 목록 등록",
+      content: content2
+    }
     axios.post(`/api/asset/upload`,body)
         .then((response) => {
           if (response.data.success) {
+            axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
             alert("자산이 등록되었습니다.")
             setTimeout(() => {
               navigate('/page/AssetManagement/list')
