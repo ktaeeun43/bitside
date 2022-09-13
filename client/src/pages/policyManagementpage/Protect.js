@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import PolicyManagementLayout from "../../templates/PolicyManagementLayout";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const StyledTableCellValue = styled.div`
 display: flex;
@@ -21,6 +22,8 @@ const TableInCell = styled.td`
 
 const Protect = () => {
   const [assets, setAssets] = useState([]);
+  const user = useSelector((state) => state.User);
+
   useEffect(() => {
     axios.get("/api/policy/getPolicy").then((response) => {
       if (response.data.success) {
@@ -44,7 +47,12 @@ const Protect = () => {
                     <TableInCell>
                       <StyledTableCellValue>{idx}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.title}</StyledTableCellValue>
-                      <StyledTableCellValue>{asset_name}</StyledTableCellValue>
+                      <StyledTableCellValue>{asset.description}</StyledTableCellValue>
+                      {user.isAdmin === true ? (
+                      <StyledTableCellValue><a href={`http://bitside.net:3000/${asset.filePath}`}>{asset_name}</a></StyledTableCellValue>
+                      ) : (
+                        <StyledTableCellValue>{asset_name}</StyledTableCellValue>
+                  )}
                     </TableInCell>
                   </StyledTableRow>
                 </>
