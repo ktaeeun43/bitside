@@ -46,6 +46,8 @@ app.use("/api/asset", require("./routes/asset"));
 app.use("/api/like", require("./routes/like"));
 app.use("/api/log", require("./routes/log"));
 app.use("/api/riskAnalsys", require("./routes/riskAnalsys"));
+app.use("/api/riskEstimation", require("./routes/riskEstimation"));
+app.use("/api/protectionData", require("./routes/protectionData"));
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client

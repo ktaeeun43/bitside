@@ -1,45 +1,41 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+//정보보호계획
 const protectionDataSchema = mongoose.Schema(
   {
     writer: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    status: {
+    controlarea: {
       type: String,
     },
-    type: {
+    riskcontent: {
       type: String,
     },
-    assetcode: {
+    //위험도
+    riskdegree: {
       type: String,
     },
-    hostname: {
+    //보호대책
+    protectplan: {
       type: String,
     },
-    version: {
+    //시급성
+    urgency: {
       type: String,
     },
-    IPadress: {
+    //구현비용
+    implementcost: {
       type: String,
     },
-    usetype: {
+    //구현난이도
+    implementlevel: {
       type: String,
     },
-    location: {
+    //우선순위
+    priority: {
       type: String,
-    },
-    employee: {
-      type: String,
-    },
-    level: {
-      type: String,
-    },
-    trouble: {
-      type: String,
-      
     },
   },
   { timestamps: true }

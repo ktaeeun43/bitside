@@ -10,34 +10,28 @@ const riskEstimationSchema = mongoose.Schema(
     assetGroup: {
       type: String,
     },
-    type: {
+    checkitem: {
       type: String,
     },
-    assetcode: {
+    riskname: {
       type: String,
     },
-    hostname: {
+    //취약성등급
+    weakpoint: {
       type: String,
     },
-    version: {
+    riskcode: {
       type: String,
     },
-    IPadress: {
+    riskcontent: {
       type: String,
     },
-    usetype: {
+    //위험등급
+    risklevel: {
       type: String,
     },
-    location: {
-      type: String,
-    },
-    employee: {
-      type: String,
-    },
-    level: {
-      type: String,
-    },
-    trouble: {
+    //위험도
+    riskdegree: {
       type: String,
     },
   },
