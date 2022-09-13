@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
 import styled from "styled-components";
+import axios from "axios";
 
 const Table = styled.div`
   display: table;
@@ -33,6 +34,17 @@ const StyledTableCellTitle = styled.div`
 `;
 
 const Results = () => {
+  const [result, setResults] = useState([]);
+  useEffect(() => {
+    axios.get("/api/riskEstimation/getRiskEstimation").then((response) => {
+      if (response.data.success) {
+        setResults(response.data.riskEstimation);
+      } else {
+        alert("분석 가져오기 실패!");
+      }
+    });
+  }, []);
+  console.log(result,"분석")
   return (
     <>
     <RiskManagementLayout>

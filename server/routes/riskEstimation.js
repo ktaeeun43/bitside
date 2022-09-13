@@ -6,7 +6,7 @@ const { auth } = require("../middleware/auth");
 
 
 
-router.get("/getRRiskEstimation", (req, res) => {
+router.get("/getRiskEstimation", (req, res) => {
   RiskEstimation.find().populate("writer")
   .exec((err, riskEstimation) => {
     if (err) return res.status(400).send(err);

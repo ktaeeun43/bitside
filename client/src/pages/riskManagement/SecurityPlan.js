@@ -36,9 +36,9 @@ const StyledTableCellTitle = styled.div`
 const SecurityPlan = () => {
   const [plan, setPlan] = useState([]);
   useEffect(() => {
-    axios.get("/api/riskAnalsys/getRiskAnalsys").then((response) => {
+    axios.get("/api/protectionData/getProtectionData").then((response) => {
       if (response.data.success) {
-        setPlan(response.data.riskAnalsys);
+        setPlan(response.data.protectionData);
       } else {
         alert("분석 가져오기 실패!");
       }
