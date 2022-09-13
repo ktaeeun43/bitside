@@ -7,7 +7,7 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getRiskAnalsys", (req, res) => {
-  RiskAnalsys.find()
+  RiskAnalsys.find().populate("writer")
   .exec((err, riskAnalsys) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, riskAnalsys });

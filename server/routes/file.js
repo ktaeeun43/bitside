@@ -60,7 +60,7 @@ router.get("/getVideos", (req, res) => {
 
 router.get("/getNetwork", (req, res) => {
   console.log(req,"네트워크")
-  File.find().exec((err, file) => {
+  File.find().populate("writer").exec((err, file) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, file });
   });

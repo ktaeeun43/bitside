@@ -7,7 +7,7 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getReceipt", (req, res) => {
-  Receipt.find()
+  Receipt.find().populate("writer")
   .exec((err, receipt) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, receipt });

@@ -7,7 +7,7 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getAsset", (req, res) => {
-    Asset.find()
+    Asset.find().populate("writer")
   .exec((err, asset) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, asset });

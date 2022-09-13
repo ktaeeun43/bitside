@@ -7,7 +7,7 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getAnouncements", (req, res) => {
-  Anouncement.find()
+  Anouncement.find().populate("writer")
   .exec((err, anouncements) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, anouncements });
@@ -15,7 +15,7 @@ router.get("/getAnouncements", (req, res) => {
 });
 
 router.post("/getAnouncementDetail", (req, res) => {
-  Anouncement.findOne({ _id: req.body.anouncementid })
+  Anouncement.findOne({ _id: req.body.anouncementid }).populate("writer")
     .exec((err, anouncementDetail) => {
       if (err) return res.status(400).send(err);
       res.status(200).json({ success: true, anouncementDetail });

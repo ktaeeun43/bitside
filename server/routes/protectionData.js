@@ -7,7 +7,7 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getProtectionData", (req, res) => {
-  ProtectionData.find()
+  ProtectionData.find().populate("writer")
   .exec((err, riskAnalsys) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, protectionData });

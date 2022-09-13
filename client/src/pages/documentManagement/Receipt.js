@@ -3,6 +3,7 @@ import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 import axios from "axios";
+import moment from "moment";
 
 
 const Wrapper = styled.div`
@@ -121,6 +122,17 @@ const StyledTableCellTitle = styled.div`
   padding: 1rem 2.2rem;
   word-break: keep-all;
 `;
+const StyledTableCellValue = styled.div`
+display: flex;
+align-items: center;
+flex: 0 0 4.8rem;
+padding: 1rem 2.2rem;
+  word-break: keep-all;
+`;
+
+const TableInCell = styled.td`
+  display: flex;
+`;
 
 const Receipt = () => {
 
@@ -153,6 +165,21 @@ const Receipt = () => {
             <StyledTableCellTitle>기록 (증적자료)</StyledTableCellTitle>
           </TableCell>
         </StyledTableRow>
+        {receipts.map((receipt, idx) => {
+              return (
+                <>
+                  <StyledTableRow key={document._id}>
+                    <TableInCell>
+                      <StyledTableCellValue>{idx}</StyledTableCellValue>
+                      <StyledTableCellValue>{receipt.controlItem}</StyledTableCellValue>
+                      <StyledTableCellValue>{receipt.content}</StyledTableCellValue>
+                      <StyledTableCellValue>{receipt.operation}</StyledTableCellValue>
+                      <StyledTableCellValue>{receipt.status}</StyledTableCellValue>
+                    </TableInCell>
+                  </StyledTableRow>
+                </>
+              );
+            })}
         
       </DocumentManagementLayout>
     </>

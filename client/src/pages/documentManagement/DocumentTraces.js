@@ -3,6 +3,7 @@ import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
 import axios from "axios";
+import moment from "moment";
 
 
 const Wrapper = styled.div`
@@ -120,6 +121,17 @@ const StyledTableCellTitle = styled.div`
   padding: 0.5rem 2.46rem;
   word-break: keep-all;
 `;
+const StyledTableCellValue = styled.div`
+display: flex;
+align-items: center;
+flex: 0 0 4.8rem;
+padding: 0.5rem 2.46rem;
+  word-break: keep-all;
+`;
+
+const TableInCell = styled.td`
+  display: flex;
+`;
 
 
 function DocumentTraces() {
@@ -152,7 +164,24 @@ function DocumentTraces() {
             <StyledTableCellTitle>최근 업로드</StyledTableCellTitle>
           </TableCell>
         </StyledTableRow>
-        
+        {documents.map((document, idx) => {
+            let createdAt =  moment(document.createdAt).format("YYYY-MM-DD")
+              return (
+                <>
+                  <StyledTableRow key={document._id}>
+                    <TableInCell>
+                      <StyledTableCellValue>{idx}</StyledTableCellValue>
+                      <StyledTableCellValue>{document.area}</StyledTableCellValue>
+                      <StyledTableCellValue>{document.title}</StyledTableCellValue>
+                      <StyledTableCellValue>{document.cycle}</StyledTableCellValue>
+                      <StyledTableCellValue></StyledTableCellValue>
+                      <StyledTableCellValue>{document.writer.name}</StyledTableCellValue>
+                      <StyledTableCellValue>{createdAt}</StyledTableCellValue>
+                    </TableInCell>
+                  </StyledTableRow>
+                </>
+              );
+            })}
       </DocumentManagementLayout>
     </>
   );

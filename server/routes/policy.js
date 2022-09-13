@@ -46,7 +46,7 @@ router.post("/upload", (req, res) => {
 });
 
 router.get("/getPolicy", (req, res) => {
-  Policy.find().exec((err, file) => {
+  Policy.find().populate("writer").exec((err, file) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, file });
   });

@@ -47,7 +47,7 @@ router.post("/upload", (req, res) => {
 });
 
 router.get("/getDocument", (req, res) => {
-    Document.find().exec((err, file) => {
+    Document.find().populate("writer").exec((err, file) => {
     if (err) return res.status(400).send(err);
     res.status(200).json({ success: true, file });
   });
