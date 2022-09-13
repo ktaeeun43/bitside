@@ -13,6 +13,9 @@ const riskEstimationSchema = mongoose.Schema(
     checkitem: {
       type: String,
     },
+    itemName: {
+      type: String,
+    },
     riskname: {
       type: String,
     },
@@ -24,6 +27,10 @@ const riskEstimationSchema = mongoose.Schema(
       type: String,
     },
     riskcontent: {
+      type: String,
+    },
+    //위험상세내용
+    riskcontent2: {
       type: String,
     },
     //위험등급

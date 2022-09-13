@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
 import styled from "styled-components";
 import axios from "axios";
+import moment from "moment";
 
 const Table = styled.div`
   display: table;
@@ -34,8 +35,8 @@ const StyledTableCellValue = styled.div`
 display: flex;
 align-items: center;
 flex: 0 0 4.8rem;
-padding: 1rem 2.2rem;
-  word-break: keep-all;
+padding: 1rem 1.86rem;
+word-break: keep-all;
 `;
 
 const TableInCell = styled.td`
@@ -71,8 +72,26 @@ const Analysis = () => {
           <StyledTableCellTitle>가용성</StyledTableCellTitle>
           <StyledTableCellTitle>위협등급</StyledTableCellTitle>
         </TableCell>
-
       </StyledTableRow>
+        {analysis.map((analy, idx) => {
+            let createdAt =  moment(analy.createdAt).format("YYYY-MM-DD")
+              return (
+                <>
+                  <StyledTableRow key={analy._id}>
+                    <TableInCell>
+                      <StyledTableCellValue>{idx}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.majortype}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.minortype}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskcontent}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.confidentiality}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.availability}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.integrity}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.risklevel}</StyledTableCellValue>
+                    </TableInCell>
+                  </StyledTableRow>
+                </>
+              );
+            })}
     </RiskManagementLayout>
   </>
   );
