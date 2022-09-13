@@ -10,7 +10,7 @@ const ffmpeg = require("fluent-ffmpeg");
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/network/");
+    cb(null, "../uploads/network/");
   },
   filename: (req, file, cb) => {
     cb(null, `네트워크_${file.originalname}`);
