@@ -247,11 +247,11 @@ function Nav() {
   const day = Math.floor(gap / (1000 * 60 * 60 * 24));
   const user = useSelector((state) => state.User);
   let result = Math.ceil( );
-  let body2 ={
-    writer: user.userData._id,
-    action: "로그아웃",
-  }
   const onClickLogOut = () =>{
+    let body2 ={
+      writer: user.userData._id,
+      action: "로그아웃",
+    }
     axios.get( `/api/users/logout`).then(response => {
        if(response.data.success) {
         axios.post(`/api/log/saveLog`,body2)
