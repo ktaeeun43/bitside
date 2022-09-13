@@ -10,7 +10,7 @@ const ffmpeg = require("fluent-ffmpeg");
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/document/");
+    cb(null, "../uploads/document/");
   },
   filename: (req, file, cb) => {
     cb(null, `증적자료_${file.originalname}`);

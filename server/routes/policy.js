@@ -12,7 +12,7 @@ let storage = multer.diskStorage({
     cb(null, "../uploads/policy");
   },
   filename: (req, file, cb) => {
-    cb(null, `${file.originalname}`);
+    cb(null, `정책_${file.originalname}`);
   },
 });
 
