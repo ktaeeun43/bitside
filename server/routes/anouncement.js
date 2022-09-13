@@ -14,6 +14,13 @@ router.get("/getAnouncements", (req, res) => {
   });
 });
 
+router.post("/getAnouncementDetail", (req, res) => {
+  Anouncement.findOne({ _id: req.body.anouncementid })
+    .exec((err, anouncementDetail) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json({ success: true, anouncementDetail });
+    });
+});
 
 router.post("/upload", (req, res) => {
   const anouncement = new Anouncement(req.body);

@@ -270,7 +270,7 @@ const Home = () => {
              let createdAt =  moment(anouncement.createdAt).format("YYYY-MM-DD")
           return (
             <div>
-            <Link style={{ textDecoration: "none" }} to={`/page/Admin/anouncement?${anouncement._id}`} >
+            <Link style={{ textDecoration: "none" }} to={`/Anouncement?${anouncement._id}`} >
                   <StyledTableRow key={anouncement._id}>
                     <TableCell>
                       <StyledTableCellValue>{anouncement.type}</StyledTableCellValue>

@@ -41,6 +41,7 @@ import AdminRegister from "./pages/Admin/AdminRegister";
 import LoginPage from "./pages/LoginPage";
 import Auth from "./hoc/auth";
 import AdminAnouncement from "./pages/Admin/AdminAnouncement";
+import Anouncement from "./pages/Anouncement";
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/Anouncement" element={<Anouncement />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route
           

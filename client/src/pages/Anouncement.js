@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import styled from "styled-components";
 import axios from "axios";
+import moment from "moment";
+
 import {
   COLOR_BRAND,
   COLOR_DISABLE_BUTTON,
@@ -15,10 +18,10 @@ import {
 } from "../constants";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../_actions/user_actions";
-import {  useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 const BoxContainer = styled.div`
   flex: 1 0 0%;
-  max-width: 370px;
+  max-width: 700px;
   width: 100%;
   margin: ${(props) => (props.isMobile ? "0 auto" : "60px auto")};
   position: relative;
@@ -33,6 +36,20 @@ const Wrapper = styled.div`
   padding: ${(props) => (props.isMobile ? "1.1875rem" : "40px 20px")};
   overflow: auto;
 `;
+const NotiWrapper = styled.div`
+  height: ${(props) => (props.isMobile ? "100%" : "")};
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid rgb(230, 230, 230);
+  padding: ${(props) => (props.isMobile ? "1.1875rem" : "40px 20px")};
+  overflow: auto;
+  `;
+  const MidInputsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  `;
 
 const TopContainer = styled.div`
   display: flex;
@@ -59,7 +76,6 @@ const TopWelcome = styled.div`
   font-size: 12px;
 `;
 
-const MidInputsContainer = styled.div``;
 
 const InputContainer = styled.div`
   display: flex;
@@ -179,101 +195,95 @@ const Button = styled.div`
   word-break: keep-all;
 `;
 
-const LoginPage = () => {
-  const dispatch = useDispatch();
-  const [id, setID] = useState("");
-  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(rememberMeChecked)
-  const [formErrorMessage, setFormErrorMessage] = useState('')
-  const navigate = useNavigate();
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe)
-  };
-  useEffect(() => {
-  }, [])
-  const onPressInputText = (e) => {
-    if (e.key === "Enter") {
-      return onClick();
-    }
-  };
-  const onChangeID = (e) => {
-    setID(e.target.value);
-  };
+const StyledTableRow = styled.tr`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
 
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
+const StyledTableColumn = styled.tr`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
-  
-  const onClick = () => {
-    let body = {
-      id: id,
-      password: password,
-    };
-    dispatch(loginUser(body))
-    .then(response => {
-      if (response.payload.loginSuccess) {
-        window.localStorage.setItem('userName', response.payload.userName);
-        window.localStorage.setItem('userId', response.payload.useId);
-        let body2 ={
-          action: "로그인",
-          contet: id
-        }
-        axios.post(`/api/log/saveLog`,body2)
-                .then((response) => {
-                  if (response.data.success) {
-                  } else {
-                  }
-                });
-        alert("로그인 되었습니다.")
-        return navigate('/')
-      } else {
-        setFormErrorMessage('Check out your Account or Password again')
-      }
-    })
-    .catch(err => {
-      setFormErrorMessage('Check out your Account or Password again')
-      setTimeout(() => {
-        setFormErrorMessage("")
-      }, 3000);
-    });
-  };
-  return (
-    <NoticeWrapper>
+const Table = styled.div`
+  display: table;
+  width: "100%";
+`;
+
+const TableCell = styled.td`
+  display: flex;
+  border-top: 1px solid #e9eaef;
+  border-left: 1px solid #e9eaef;
+  &:last-child {
+    border-right: 1px solid #e9eaef;
+  }
+  border-right: 1px solid #e9eaef;
+  display: flex;
+  width: 100%;
+`;
+const StyledTableCellTitle = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 0 0 12rem;
+  text-align: start;
+  background-color: #f5f5f7;
+  padding: 1.2rem 1.6rem;
+  width: 12rem;
+  flex: 0 0 10rem;
+`;
+
+const StyledTableCellValue = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 0 0 12rem;
+  padding: 1.1rem 1rem;
+`;
+
+const Anouncement = () => {
+    let param = useLocation()
+    let anouncementid = param.search.substr(1)
+    const [anouncement, setAnouncement] = useState([]);
+    const anouncementVariable = {
+        anouncementid: anouncementid,
+      };
+    useEffect(() => {
+        axios.post("/api/anouncement/getAnouncementDetail", anouncementVariable).then((response) => {
+            if (response.data.success) {
+                setAnouncement(response.data.anouncementDetail);
+            } else {
+                alert("공지 가져오기 실패");
+            }
+
+        });
+        
+    }, []);
+    console.log(anouncement,"공지내용")
+    let createdAt =  moment(anouncement.createdAt).format("YYYY-MM-DD")
+    return (
+        <NoticeWrapper>
       <BoxContainer>
         <Wrapper>
-          <TopContainer>
-            <TopTitle>로그인</TopTitle>
-          </TopContainer>
           <MidInputsContainer>
-            <InputContainer>
-              <InputLabel>ID</InputLabel>
-              <Input
-                type={"input"}
-                placeholder="아이디를 입력해주세요"
-                onChange={onChangeID}
-                value={id}
-              />
-            </InputContainer>
-            <InputContainer>
-              <InputLabel>비밀번호</InputLabel>
-              <Input
-                type={"password"}
-                placeholder="비밀번호를 입력해주세요"
-                onChange={onChangePassword}
-                value={password}
-                onKeyDown={onPressInputText}
-              />
-            </InputContainer>
-            <ButtonContainer>
-              <Button onClick={onClick}>로그인하기</Button>
-            </ButtonContainer>
+            Bitvelo ISMS 인증 프로그램
           </MidInputsContainer>
         </Wrapper>
-      </BoxContainer>
+          <NotiWrapper>
+          <MidInputsContainer>
+            공지사항 {createdAt}
+          </MidInputsContainer>
+          <MidInputsContainer>
+           분류:{anouncement.type}
+            <br/>
+            제목:{anouncement.title}
+            <br/>
+            내용:{anouncement.content}
+          </MidInputsContainer>
+            </NotiWrapper>
+            </BoxContainer>
     </NoticeWrapper>
-  );
+    );
 };
 
-export default LoginPage;
+export default Anouncement;
