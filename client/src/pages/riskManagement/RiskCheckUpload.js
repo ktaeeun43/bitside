@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
+import axios from "axios";
+import {  useNavigate } from "react-router-dom";
+
+import { useSelector } from "react-redux";
 
 
 const Wrapper = styled.div`
@@ -91,7 +95,8 @@ justify-content: center;
 `;
 
 function RiskCheckUpload() {
-
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.User);
   const [group, setGroup] = useState("");
   const [assetGrade, setAssetGrade] = useState("");
   const [check, setCheck] = useState("");
@@ -132,7 +137,37 @@ function RiskCheckUpload() {
   function onChangeRiskLevel(event) {
     setRiskLevel(event.target.value);
   }
+  function onsubmit() {
+    let body = {
+      writer: user.userData._id,
 
+
+    }
+    let content2 = JSON.stringify(body);
+    let body2 ={
+      writer: user.userData._id,
+      action: "위협 분석 등록",
+      content: content2
+    }
+    axios.post(`/api/riskAnalsys/upload`,body)
+        .then((response) => {
+          if (response.data.success) {
+            axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
+            alert("위협 분석 등록되었습니다.")
+            setTimeout(() => {
+              navigate('/page/RiskManagement/analysis')
+            }, 1000);
+          } else {
+            alert("위협 분석 등록 실패");
+          }
+        });
+    console.log(body,"위협 분석 등록")
+  }
 
   return (
     <>

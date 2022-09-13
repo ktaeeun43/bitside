@@ -125,7 +125,6 @@ function AssetManagement() {
   const [production, setProduction] = useState("");
   const [type, setType] = useState("");
   const [level, setLevel] = useState("");
-  console.log(user,"로그인 유저")
   function onChangeService(event) {
     setService(event.target.value);
   }
