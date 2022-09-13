@@ -34,6 +34,7 @@ const Protect = () => {
     });
   }, []);
   console.log(assets,"자산")
+  console.log(user.userData.isAdmin,"자산")
   return (
     <>
       <Outlet />
@@ -48,7 +49,7 @@ const Protect = () => {
                       <StyledTableCellValue>{idx}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.title}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.description}</StyledTableCellValue>
-                      {user.isAdmin === true ? (
+                      {user.userData.isAdmin === true ? (
                       <StyledTableCellValue><a href={`http://bitside.net:3000/${asset.filePath}`}>{asset_name}</a></StyledTableCellValue>
                       ) : (
                         <StyledTableCellValue>{asset_name}</StyledTableCellValue>
