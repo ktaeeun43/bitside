@@ -9,10 +9,10 @@ const { auth } = require("../middleware/auth");
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/policy/");
+    cb(null, "../uploads/policy");
   },
   filename: (req, file, cb) => {
-    cb(null, `증적자료_${file.originalname}`);
+    cb(null, `${file.originalname}`);
   },
 });
 
@@ -32,7 +32,7 @@ let upload = multer({ storage: storage, fileFilter: fileFilter }).single(
 router.post("/upload", (req, res) => {
   //    문서를 서버에 저장한다.
   //   console.log("비디오 req");
-     console.log(req);
+     console.log(req); 
   upload(req, res, (err) => {
     if (err) {
       return res.json({ success: false, err });

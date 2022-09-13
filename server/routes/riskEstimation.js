@@ -7,6 +7,7 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getRiskEstimation", (req, res) => {
+  console.log("위험평가")
   RiskEstimation.find().populate("writer")
   .exec((err, riskEstimation) => {
     if (err) return res.status(400).send(err);

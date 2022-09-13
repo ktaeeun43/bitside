@@ -104,6 +104,7 @@ function RiskCheckUpload() {
   const [vulnerability, setVulnerability] = useState("");
   const [riskCode, setRiskCode] = useState("");
   const [riskContents, setRiskContents] = useState("");
+  const [riskContents2, setRiskContents2] = useState("");
   const [riskLevel, setRiskLevel] = useState("");
   const [riskdegree, setRiskdegree] = useState("");
 
@@ -134,6 +135,9 @@ function RiskCheckUpload() {
   function onChangeRiskContent(event) {
     setRiskContents(event.target.value);
   }
+  function onChangeRiskContent2(event) {
+    setRiskContents2(event.target.value);
+  }
 
   function onChangeRiskLevel(event) {
     setRiskLevel(event.target.value);
@@ -147,11 +151,13 @@ function RiskCheckUpload() {
       writer: user.userData._id,
       assetGroup: group,
       checkitem: assetGrade,
+      itemName: itemName,
       riskname: check,
       //취약성등급
       weakpoint: vulnerability,
       riskcode: riskCode,
       riskcontent: riskContents,
+      riskcontent2: riskContents2,
       //위험등급
       risklevel: riskLevel,
       //위험도
@@ -263,6 +269,15 @@ function RiskCheckUpload() {
             value={riskLevel}
             />
           </InputWrapper>
+          <InputWrapper>
+            <InputLabel>위협상세내용</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="위협상세내용을 입력해주세요."
+            onChange={onChangeRiskContent2}
+            value={riskContents2}
+            />
+            </InputWrapper>
           <InputWrapper>
           <InputLabel>위험도</InputLabel>
           <Input 

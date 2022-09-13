@@ -104,9 +104,13 @@ function SecurityPlanUpload() {
   const [priority, setPriority] = useState("");
   const [riskContents, setRiskContents] = useState("");
   const [riskLevel, setRiskLevel] = useState("");
+  const [checkitem, setCheckItem] = useState("");
 
   function onChangeControl(event) {
     setControl(event.target.value);
+  }
+  function onChangeCheckItem(event) {
+    setCheckItem(event.target.value);
   }
 
   function onChangeProtection(event) {
@@ -142,6 +146,7 @@ function SecurityPlanUpload() {
       writer: user.userData._id,
       controlarea: control,
       riskcontent: riskContents,
+      checkitem: checkitem,
       //위험도
       riskdegree: riskLevel,
       //보호대책
@@ -196,6 +201,15 @@ function SecurityPlanUpload() {
             placeholder="통제영역을 입력해주세요."
             onChange={onChangeControl}
             value={control}
+            />
+          </InputWrapper>
+          <InputWrapper>
+          <InputLabel>점검항목</InputLabel>
+          <Input 
+            type={"input"}
+            placeholder="통제영역을 입력해주세요."
+            onChange={onChangeCheckItem}
+            value={checkitem}
             />
           </InputWrapper>
           <InputWrapper>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
 import styled from "styled-components";
 import axios from "axios";
+import moment from "moment";
 
 const Table = styled.div`
   display: table;
@@ -32,6 +33,18 @@ const StyledTableCellTitle = styled.div`
   word-break: keep-all;
   
 `;
+const StyledTableCellValue = styled.div`
+display: flex;
+align-items: center;
+flex: 0 0 4.8rem;
+padding: 1.1rem 1rem;
+word-break: keep-all;
+`;
+
+const TableInCell = styled.td`
+  display: flex;
+`;
+
 
 const Results = () => {
   const [result, setResults] = useState([]);
@@ -40,11 +53,11 @@ const Results = () => {
       if (response.data.success) {
         setResults(response.data.riskEstimation);
       } else {
-        alert("분석 가져오기 실패!");
+        alert("평가 가져오기 실패!");
       }
     });
   }, []);
-  console.log(result,"분석")
+  console.log(result,"평가")
   return (
     <>
     <RiskManagementLayout>
@@ -61,10 +74,31 @@ const Results = () => {
             <StyledTableCellTitle>위협 코드</StyledTableCellTitle>
             <StyledTableCellTitle>위협내용</StyledTableCellTitle>
             <StyledTableCellTitle>위협등급</StyledTableCellTitle>
-            <StyledTableCellTitle>위협내용</StyledTableCellTitle>
+            <StyledTableCellTitle>위협상세내용</StyledTableCellTitle>
             <StyledTableCellTitle>위험도</StyledTableCellTitle>
           </TableCell>
         </StyledTableRow>
+        {result.map((analy, idx) => {
+            let createdAt =  moment(analy.createdAt).format("YYYY-MM-DD")
+              return (
+                <>
+                  <StyledTableRow key={analy._id}>
+                    <TableInCell>
+                      <StyledTableCellValue>{analy.checkitem}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.assetGroup}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskname}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.itemName}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.weakpoint}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskcode}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskcontent}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.risklevel}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskcontent2}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskdegree}</StyledTableCellValue>
+                    </TableInCell>
+                  </StyledTableRow>
+                </>
+              );
+            })}
     </RiskManagementLayout>
     </>
   );

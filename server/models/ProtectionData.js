@@ -13,6 +13,9 @@ const protectionDataSchema = mongoose.Schema(
     riskcontent: {
       type: String,
     },
+    checkitem: {
+      type: String,
+    },
     //위험도
     riskdegree: {
       type: String,

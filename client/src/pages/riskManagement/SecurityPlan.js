@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
 import styled from "styled-components";
 import axios from "axios";
+import moment from "moment";
 
 const Table = styled.div`
   display: table;
@@ -32,6 +33,17 @@ const StyledTableCellTitle = styled.div`
   word-break: keep-all;
   
 `;
+const StyledTableCellValue = styled.div`
+display: flex;
+align-items: center;
+flex: 0 0 4.8rem;
+padding: 1.1rem 1.38rem;
+word-break: keep-all;
+`;
+
+const TableInCell = styled.td`
+  display: flex;
+`;
 
 const SecurityPlan = () => {
   const [plan, setPlan] = useState([]);
@@ -40,11 +52,11 @@ const SecurityPlan = () => {
       if (response.data.success) {
         setPlan(response.data.protectionData);
       } else {
-        alert("분석 가져오기 실패!");
+        alert("계획 가져오기 실패!");
       }
     });
   }, []);
-  console.log(plan,"분석")
+  console.log(plan,"계획")
   return (
     <>
       <RiskManagementLayout>
@@ -64,6 +76,26 @@ const SecurityPlan = () => {
             <StyledTableCellTitle>우선순위</StyledTableCellTitle>
           </TableCell>
         </StyledTableRow>
+        {plan.map((analy, idx) => {
+            let createdAt =  moment(analy.createdAt).format("YYYY-MM-DD")
+              return (
+                <> 
+                  <StyledTableRow key={analy._id}>
+                    <TableInCell>
+                      <StyledTableCellValue>{analy.controlarea}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.checkitem}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskcontent}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.riskdegree}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.protectplan}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.urgency}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.implementcost}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.implementlevel}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.priority}</StyledTableCellValue>
+                    </TableInCell>
+                  </StyledTableRow>
+                </>
+              );
+            })}
       </RiskManagementLayout>
     </>
   );
