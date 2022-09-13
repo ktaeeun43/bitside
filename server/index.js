@@ -51,7 +51,7 @@ app.use("/api/protectionData", require("./routes/protectionData"));
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("../uploads"));
 
 // Serve static assets if in production
 //if (process.env.NODE_ENV === "production") {
@@ -65,7 +65,7 @@ app.use("/uploads", express.static("uploads"));
   });
 //}
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`);

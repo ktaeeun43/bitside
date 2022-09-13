@@ -9,10 +9,10 @@ const { auth } = require("../middleware/auth");
 // STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/policy/");
+    cb(null, "../uploads/policy");
   },
   filename: (req, file, cb) => {
-    cb(null, `증적자료_${file.originalname}`);
+    cb(null, `${file.originalname}`);
   },
 });
 
