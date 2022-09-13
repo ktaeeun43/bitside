@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RiskManagementLayout from "../../templates/RiskManagementLayout";
 import styled from "styled-components";
+import axios from "axios";
 
 const Table = styled.div`
   display: table;
@@ -29,8 +30,30 @@ const StyledTableCellTitle = styled.div`
   background-color: #f5f5f7;
   padding: 1rem 2.56rem;
 `;
+const StyledTableCellValue = styled.div`
+display: flex;
+align-items: center;
+flex: 0 0 4.8rem;
+padding: 1rem 2.2rem;
+  word-break: keep-all;
+`;
+
+const TableInCell = styled.td`
+  display: flex;
+`;
 
 const Analysis = () => {
+  const [analysis, setAnalsys] = useState([]);
+  useEffect(() => {
+    axios.get("/api/riskAnalsys/getRiskAnalsys").then((response) => {
+      if (response.data.success) {
+        setAnalsys(response.data.riskAnalsys);
+      } else {
+        alert("분석 가져오기 실패!");
+      }
+    });
+  }, []);
+  console.log(analysis,"분석")
   return (
     <>
     <RiskManagementLayout>
@@ -47,7 +70,6 @@ const Analysis = () => {
           <StyledTableCellTitle>무결성</StyledTableCellTitle>
           <StyledTableCellTitle>가용성</StyledTableCellTitle>
           <StyledTableCellTitle>위협등급</StyledTableCellTitle>
-
         </TableCell>
 
       </StyledTableRow>
