@@ -140,6 +140,14 @@ function Risk() {
   function onsubmit() {
     let body = {
       writer: user.userData._id,
+      riskCode: riskCode,
+      majortype:mainCategory,
+      minortype:subCategory,
+      riskcontent: contents,
+      confidentiality: confidential,
+      integrity:integrity,
+      availability:availability,
+      risklevel:riskLevel,
 
 
     }

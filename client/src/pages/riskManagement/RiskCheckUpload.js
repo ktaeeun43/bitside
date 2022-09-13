@@ -105,6 +105,7 @@ function RiskCheckUpload() {
   const [riskCode, setRiskCode] = useState("");
   const [riskContents, setRiskContents] = useState("");
   const [riskLevel, setRiskLevel] = useState("");
+  const [riskdegree, setRiskdegree] = useState("");
 
   function onChangeGroup(event) {
     setGroup(event.target.value);
@@ -137,19 +138,32 @@ function RiskCheckUpload() {
   function onChangeRiskLevel(event) {
     setRiskLevel(event.target.value);
   }
+  function onChangeRiskdegree(event) {
+    setRiskdegree(event.target.value);
+  }
   function onsubmit() {
+    console.log('위험평가등록')
     let body = {
       writer: user.userData._id,
-
-
+      assetGroup: group,
+      checkitem: assetGrade,
+      riskname: check,
+      //취약성등급
+      weakpoint: vulnerability,
+      riskcode: riskCode,
+      riskcontent: riskContents,
+      //위험등급
+      risklevel: riskLevel,
+      //위험도
+      riskdegree:riskdegree
     }
     let content2 = JSON.stringify(body);
     let body2 ={
       writer: user.userData._id,
-      action: "위협 분석 등록",
+      action: "위험 평가 등록",
       content: content2
     }
-    axios.post(`/api/riskAnalsys/upload`,body)
+    axios.post(`/api/riskEstimation/upload`,body)
         .then((response) => {
           if (response.data.success) {
             axios.post(`/api/log/saveLog`,body2)
@@ -158,15 +172,15 @@ function RiskCheckUpload() {
                       } else {
                       }
                     });
-            alert("위협 분석 등록되었습니다.")
+            alert("위험 평가 등록되었습니다.")
             setTimeout(() => {
-              navigate('/page/RiskManagement/analysis')
+              navigate('/page/RiskManagement/results')
             }, 1000);
           } else {
-            alert("위협 분석 등록 실패");
+            alert("위험 평가 등록 실패");
           }
         });
-    console.log(body,"위협 분석 등록")
+    console.log(body,"위험 평가 등록")
   }
 
   return (
@@ -250,27 +264,18 @@ function RiskCheckUpload() {
             />
           </InputWrapper>
           <InputWrapper>
-          <InputLabel>위협내용</InputLabel>
-          <Input 
-            type={"input"}
-            placeholder="위협내용을 입력해주세요."
-            onChange={onChangeRiskContent}
-            value={riskContents}
-            />
-          </InputWrapper>
-          <InputWrapper>
           <InputLabel>위험도</InputLabel>
           <Input 
             type={"input"}
             placeholder="위험도를 입력해주세요."
-            onChange={onChangeRiskLevel}
-            value={riskLevel}
+            onChange={onChangeRiskdegree}
+            value={riskdegree}
             />
           </InputWrapper> 
           </RegisterInputWrapper>
           </Wrapper>
           <InBoxWrapper>
-          <Button>등록하기</Button>
+          <Button onClick={onsubmit}>등록하기</Button>
           </InBoxWrapper>
         </BoxWrapper>
     </>

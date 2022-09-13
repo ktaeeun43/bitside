@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
+import axios from "axios";
+import {  useNavigate } from "react-router-dom";
 
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
 height: ${(props) => (props.isMobile ? "100%" : "")};
@@ -91,7 +94,8 @@ justify-content: center;
 `;
 
 function SecurityPlanUpload() {
-
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.User);
   const [control, setControl] = useState("");
   const [protection , setProtection ] = useState("");
   const [urgency, setUrgency] = useState("");
@@ -132,7 +136,50 @@ function SecurityPlanUpload() {
   function onChangeRiskLevel(event) {
     setRiskLevel(event.target.value);
   }
-
+  function onsubmit() {
+    console.log('정보 보호 계획 등록')
+    let body = {
+      writer: user.userData._id,
+      controlarea: control,
+      riskcontent: riskContents,
+      //위험도
+      riskdegree: riskLevel,
+      //보호대책
+      protectplan: protection,
+      //시급성
+      urgency:urgency,
+      //구현비용
+      implementcost: cost,
+      //구현난이도
+      implementlevel: difficulty,
+      //우선순위
+      priority: priority
+    }
+    let content2 = JSON.stringify(body);
+    let body2 ={
+      writer: user.userData._id,
+      action: "정보 보호 계획 등록",
+      content: content2
+    }
+    axios.post(`/api/protectionData/upload`,body)
+        .then((response) => {
+          if (response.data.success) {
+            axios.post(`/api/log/saveLog`,body2)
+                    .then((response) => {
+                      if (response.data.success) {
+                      } else {
+                      }
+                    });
+            alert("정보 보호 계획 등록되었습니다.")
+            setTimeout(() => {
+              navigate('/page/RiskManagement/securityplan')
+            }, 1000);
+          } else {
+            alert("정보 보호 계획 등록 실패");
+          }
+        });
+    console.log(body,"정보 보호 계획 등록")
+  }
 
   return (
     <>
@@ -217,7 +264,7 @@ function SecurityPlanUpload() {
           </RegisterInputWrapper>
           </Wrapper>
           <InBoxWrapper>
-          <Button>등록하기</Button>
+          <Button onClick={onsubmit}>등록하기</Button>
           </InBoxWrapper>
           
         </BoxWrapper>
