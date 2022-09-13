@@ -166,7 +166,10 @@ function DocumentWrite() {
     const variables = {
       writer: user.userData._id,
       title: "증적자료",
-      description: description,
+      area: area,
+      itemName: itemName,
+      cycle: cycle,
+      manager: manager,
       filePath: 파일경로,
     };
     let content2 = JSON.stringify(variables);

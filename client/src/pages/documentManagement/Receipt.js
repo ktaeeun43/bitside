@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
+import axios from "axios";
 
 
 const Wrapper = styled.div`
@@ -123,44 +124,17 @@ const StyledTableCellTitle = styled.div`
 
 const Receipt = () => {
 
-
-  const [index, setIndex] = useState("");
-  const [controlItem, setControlItem] = useState("");
-  const [content, setContent] = useState("");
-  const [operation, setOperation] = useState("");
-  const [status, setStatus] = useState("");
-  const [document, setDocument] = useState("");
-  const [record, setRecord] = useState("");
-
-  function onChangeIndex(event) {
-    setIndex(event.target.value);
-  }
-
-  function onChangeControlItem(event) {
-    setControlItem(event.target.value);
-  }
-
-  function onChangeContent(event) {
-    setContent(event.target.value);
-  }
-
-  function onChangeOperation(event) {
-    setOperation(event.target.value);
-  }
-
-  function onChangeStatus(event) {
-    setStatus(event.target.value);
-  }
-
-  function onChangeDocument(event) {
-    setDocument(event.target.value);
-  }
-
-  function onChangeRecord(event) {
-    setRecord(event.target.value);
-  }
-
-
+  const [receipts, setReceipts] = useState([]);
+  useEffect(() => {
+    axios.get("/api/receipt/getReceipt").then((response) => {
+      if (response.data.success) {
+        setReceipts(response.data.receipt);
+      } else {
+        alert("명세서 가져오기 실패!");
+      }
+    });
+  }, []);
+  console.log(receipts,"명세서")
 
   return (
     <>

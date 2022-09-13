@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DocumentManagementLayout from "../../templates/DocumentManagementLayout";
 import styled from "styled-components";
 import { COLOR_LAYOUT_BACKGROUND, COLOR_WHITE, COLOR_ABLE_BUTTON } from "../../constants";
+import axios from "axios";
 
 
 const Wrapper = styled.div`
@@ -123,44 +124,17 @@ const StyledTableCellTitle = styled.div`
 
 function DocumentTraces() {
 
-  const [index, setIndex ] = useState("");
-  const [area, setArea] = useState("");
-  const [code, setCode] = useState("");
-  const [cycle, setCycle] = useState("");
-  const [manager, setManager] = useState("");
-  const [upload, setUpload] = useState("");
-  const [itemName, setItemName] = useState("");
-
-  function onChangeIndex(event) {
-    setIndex(event.target.value);
-  }
-
-  function onChangeArea(event) {
-    setArea(event.target.value);
-  }
-
-  function onChangeCode(event) {
-    setCode(event.target.value);
-  }
-
-  function onChangeItemName(event) {
-    setItemName(event.target.value);
-  }
-
-  function onChangeCycle(event) {
-    setCycle(event.target.value);
-  }
-
-  function onChangeManager(event) {
-    setManager(event.target.value);
-  }
-
-  function onChangeUpload(event) {
-    setUpload(event.target.value);
-  }
-
-
-
+  const [documents, setDocuments] = useState([]);
+  useEffect(() => {
+    axios.get("/api/document/getDocument").then((response) => {
+      if (response.data.success) {
+        setDocuments(response.data.file);
+      } else {
+        alert("증적 가져오기 실패!");
+      }
+    });
+  }, []);
+  console.log(documents,"증적")
   return (
     <>
       <DocumentManagementLayout>

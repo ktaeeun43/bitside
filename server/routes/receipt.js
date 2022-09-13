@@ -7,10 +7,10 @@ const { auth } = require("../middleware/auth");
 
 
 router.get("/getReceipt", (req, res) => {
-    Asset.find()
-  .exec((err, asset) => {
+  Receipt.find()
+  .exec((err, receipt) => {
     if (err) return res.status(400).send(err);
-    res.status(200).json({ success: true, asset });
+    res.status(200).json({ success: true, receipt });
   });
 });
 

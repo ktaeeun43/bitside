@@ -82,7 +82,7 @@ const AssetList = () => {
       if (response.data.success) {
         setAssets(response.data.asset);
       } else {
-        alert("유저 가져오기 실패!");
+        alert("자산 가져오기 실패!");
       }
     });
   }, []);

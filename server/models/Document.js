@@ -11,7 +11,16 @@ const documentSchema = mongoose.Schema(
       type: String,
       maxlength: 50,
     },
-    description: {
+    area: {
+      type: String,
+    },
+    itemName: {
+      type: String,
+    },
+    cycle: {
+      type: String,
+    },
+    manger: {
       type: String,
     },
     filePath: {
