@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.get("/api/hello", (req, res) => res.send("Hello Bitvelo!"));
+app.get("http://bitside.net:3000/", (req, res) => res.redirect("https://bitside.net/"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/file", require("./routes/file"));
 app.use("/api/document", require("./routes/document"));
