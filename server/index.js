@@ -37,7 +37,16 @@ const connect = mongoose
   .catch((err) => console.log(err));
 
 app.use(cors());
-
+app.get("*",(req,res,next) => {
+  console.log("인증" , req.secure);
+  if (req.secure){
+    next()
+  } else{
+    let to = "https://" + req.headers.host + req.url;
+    console.log("to =" =to)
+    return res.redirect("https://" + req.headers.host + req.url);
+  }
+})
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
