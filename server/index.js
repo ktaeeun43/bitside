@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
+const https = require('https');
+const fs = require('fs');
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -13,6 +15,15 @@ const config = require("./config/key");
 //   .connect(config.mongoURI, { useNewUrlParser: true })
 //   .then(() => console.log("DB connected"))
 //   .catch(err => console.error(err));
+
+const options = {
+  ca: fs.readFileSync('/etc/letsencrypt/live/bitside.net/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/bitside.net/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/bitside.net/cert.pem'),
+};
+https.createServer(options, app).listen(443, () => {
+  console.log('443번 포트에서 대기중입니다.');
+});
 
 const mongoose = require("mongoose");
 const connect = mongoose
