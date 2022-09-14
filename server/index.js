@@ -42,9 +42,9 @@ app.get("*",(req,res,next) => {
   if (req.secure){
     next()
   } else{
-    let to = "https://" + req.headers.host + req.url.split(':')[1];
-    console.log("url = " + req.headers.host)
-    return res.redirect("https://" + req.headers.host + req.url.split(':')[1]);
+    let to = "https://" + req.headers.host.split(':')[0] + req.url;
+    console.log("url = " + to)
+    return res.redirect(to);
   }
 })
 //to not get any deprecation warning or error
