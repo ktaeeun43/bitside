@@ -43,7 +43,7 @@ app.get("*",(req,res,next) => {
     next()
   } else{
     let to = "https://" + req.headers.host + req.url;
-    console.log("to =" =to)
+    console.log("to =" + to)
     return res.redirect("https://" + req.headers.host + req.url);
   }
 })
