@@ -46,8 +46,16 @@ const NotiWrapper = styled.div`
   overflow: auto;
   `;
   const MidInputsContainer = styled.div`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 15px;
+  `;
+  const MidContentsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 30px;
+  justify-content: center;
     margin-bottom: 15px;
   `;
 
@@ -273,13 +281,13 @@ const Anouncement = () => {
           <MidInputsContainer>
             공지사항 {createdAt}
           </MidInputsContainer>
-          <MidInputsContainer>
+          <MidContentsContainer>
            분류:{anouncement.type}
             <br/>
             제목:{anouncement.title}
             <br/>
             내용:{anouncement.content}
-          </MidInputsContainer>
+          </MidContentsContainer>
             </NotiWrapper>
             </BoxContainer>
     </NoticeWrapper>
