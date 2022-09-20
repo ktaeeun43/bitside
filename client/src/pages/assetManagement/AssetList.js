@@ -65,6 +65,16 @@ const StyledTableCellTitle = styled.div`
 const StyledTableCellValue = styled.div`
 display: flex;
 align-items: center;
+width: 8%;
+flex: 0 0 4.8rem;
+  padding: 1rem 1rem;
+  word-break: keep-all;
+`;
+const StyledTableCelIPlValue = styled.div`
+display: flex;
+align-items: center;
+width: 8%;
+font-size: 11px;
 flex: 0 0 4.8rem;
   padding: 1rem 1rem;
   word-break: keep-all;
@@ -123,7 +133,7 @@ const AssetList = () => {
                       <StyledTableCellValue>{asset.assetcode}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.hostname}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.version}</StyledTableCellValue>
-                      <StyledTableCellValue>{asset.IPadress}</StyledTableCellValue>
+                      <StyledTableCelIPlValue>{asset.IPadress}</StyledTableCelIPlValue>
                       <StyledTableCellValue>{asset.usetype}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.location}</StyledTableCellValue>
                       <StyledTableCellValue>{asset.employee}</StyledTableCellValue>

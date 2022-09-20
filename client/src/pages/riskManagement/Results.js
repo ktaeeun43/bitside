@@ -5,59 +5,71 @@ import axios from "axios";
 import moment from "moment";
 
 const Table = styled.div`
-  display: table;
+  display: flex;
   width: 100%;
-`;
-const Title = styled.div`
+  `;
+  const Title = styled.div`
   padding: 10px;
   font-size: 25px;
-`;
-
-const StyledTableRow = styled.tr`
+  `;
+  
+  const StyledTableRow = styled.tr`
   display: flex;
-`;
-const TableCell = styled.td`
+  width: 100%;
+  `;
+  const TableCell = styled.td`
   display: flex;
+  justify-content: space-evenly;
+  width:100%;
+  margin: 5px;
   border-top: 1px solid #e9eaef;
   border-left: 1px solid #e9eaef;
   border-right: 1px solid #e9eaef;
-  display: flex;
+  background-color: #f5f5f7;
 `;
 
 const StyledTableCellTitle = styled.div`
   display: flex;
+  width:100%;
   align-items: center;
-  background-color: #f5f5f7;
   flex: 0 0 4.8rem;
-  padding: 1.1rem 1rem;
+  word-break: keep-all;
+  
+`;
+
+const StyledTableCellLevelTitle = styled.div`
+  display: flex;
+  width:100%;
+  align-items: center;
+  flex: 0 0 4.8rem;
   word-break: keep-all;
   
 `;
 const StyledTableCellValue = styled.div`
 display: flex;
+justify-content: space-around;
 align-items: center;
 width: 10%;
 height: 60px;
 overflow: auto;
 flex: 0 0 4.8rem;
-padding: 1.1rem 1rem;
 word-break: keep-all;
 `;
 
 const StyledTableCellRiskValue = styled.div`
 display: flex;
-align-items: center;
-width: 10%;
+width: 100%;
 height: 60px;
 overflow: auto;
-font-size: 8px;
+font-size: 12px;
 flex: 0 0 4.8rem;
-padding: 1.1rem 1rem;
 word-break: keep-all;
 `;
 
 const TableInCell = styled.td`
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 
@@ -82,15 +94,15 @@ const Results = () => {
         <StyledTableRow>
           <TableCell>
             <StyledTableCellTitle>자산그룹</StyledTableCellTitle>
-            <StyledTableCellTitle>자산 등급</StyledTableCellTitle>
+            <StyledTableCellLevelTitle>자산 등급</StyledTableCellLevelTitle>
             <StyledTableCellTitle>점검항목</StyledTableCellTitle>
             <StyledTableCellTitle>항목명</StyledTableCellTitle>
             <StyledTableCellTitle>취약성등급</StyledTableCellTitle>
-            <StyledTableCellTitle>위협 코드</StyledTableCellTitle>
+            <StyledTableCellLevelTitle>위협 코드</StyledTableCellLevelTitle>
             <StyledTableCellTitle>위협내용</StyledTableCellTitle>
-            <StyledTableCellTitle>위협등급</StyledTableCellTitle>
+            <StyledTableCellLevelTitle>위협등급</StyledTableCellLevelTitle>
             <StyledTableCellTitle>위협상세내용</StyledTableCellTitle>
-            <StyledTableCellTitle>위험도</StyledTableCellTitle>
+            <StyledTableCellLevelTitle>위험도</StyledTableCellLevelTitle>
           </TableCell>
         </StyledTableRow>
         {result.map((analy, idx) => {
@@ -99,8 +111,8 @@ const Results = () => {
                 <>
                   <StyledTableRow key={analy._id}>
                     <TableInCell>
-                      <StyledTableCellValue>{analy.checkitem}</StyledTableCellValue>
                       <StyledTableCellValue>{analy.assetGroup}</StyledTableCellValue>
+                      <StyledTableCellValue>{analy.checkitem}</StyledTableCellValue>
                       <StyledTableCellValue>{analy.riskname}</StyledTableCellValue>
                       <StyledTableCellRiskValue>{analy.itemName}</StyledTableCellRiskValue>
                       <StyledTableCellValue>{analy.weakpoint}</StyledTableCellValue>
