@@ -243,8 +243,10 @@ const StyledTableCellValue = styled.div`
 const Home = () => {
   const [ anouncement, setAnouncements] = useState([])
   useEffect(() => {
+    console.log(process.env.REACT_APP_PUBLIC_API_ENDPOINT,"주소")
+    console.log(process.env.REACT_APP_PUBLIC_LOGO_PATH,"로고주소")
     //기존의 landingPage에 있는 코드 재사용
-    axios.get("/api/anouncement/getAnouncements").then((response) => {
+    axios.get(`/api/anouncement/getAnouncements`).then((response) => {
       if (response.data.success) {
         const announcements = [ ...response.data.anouncements].sort().reverse()
         setAnouncements(announcements);

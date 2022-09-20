@@ -36,6 +36,21 @@ const StyledTableCellTitle = styled.div`
 const StyledTableCellValue = styled.div`
 display: flex;
 align-items: center;
+width: 10%;
+height: 60px;
+overflow: auto;
+flex: 0 0 4.8rem;
+padding: 1.1rem 1rem;
+word-break: keep-all;
+`;
+
+const StyledTableCellRiskValue = styled.div`
+display: flex;
+align-items: center;
+width: 10%;
+height: 60px;
+overflow: auto;
+font-size: 8px;
 flex: 0 0 4.8rem;
 padding: 1.1rem 1rem;
 word-break: keep-all;
@@ -87,12 +102,12 @@ const Results = () => {
                       <StyledTableCellValue>{analy.checkitem}</StyledTableCellValue>
                       <StyledTableCellValue>{analy.assetGroup}</StyledTableCellValue>
                       <StyledTableCellValue>{analy.riskname}</StyledTableCellValue>
-                      <StyledTableCellValue>{analy.itemName}</StyledTableCellValue>
+                      <StyledTableCellRiskValue>{analy.itemName}</StyledTableCellRiskValue>
                       <StyledTableCellValue>{analy.weakpoint}</StyledTableCellValue>
                       <StyledTableCellValue>{analy.riskcode}</StyledTableCellValue>
-                      <StyledTableCellValue>{analy.riskcontent}</StyledTableCellValue>
+                      <StyledTableCellRiskValue>{analy.riskcontent}</StyledTableCellRiskValue>
                       <StyledTableCellValue>{analy.risklevel}</StyledTableCellValue>
-                      <StyledTableCellValue>{analy.riskcontent2}</StyledTableCellValue>
+                      <StyledTableCellRiskValue>{analy.riskcontent2}</StyledTableCellRiskValue>
                       <StyledTableCellValue>{analy.riskdegree}</StyledTableCellValue>
                     </TableInCell>
                   </StyledTableRow>
