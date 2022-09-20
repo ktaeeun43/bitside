@@ -68,7 +68,7 @@ const Results = () => {
           <TableCell>
             <StyledTableCellTitle>자산그룹</StyledTableCellTitle>
             <StyledTableCellTitle>자산 등급</StyledTableCellTitle>
-            <StyledTableCellTitle>점겅항목</StyledTableCellTitle>
+            <StyledTableCellTitle>점검항목</StyledTableCellTitle>
             <StyledTableCellTitle>항목명</StyledTableCellTitle>
             <StyledTableCellTitle>취약성등급</StyledTableCellTitle>
             <StyledTableCellTitle>위협 코드</StyledTableCellTitle>
