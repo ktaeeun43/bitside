@@ -306,11 +306,12 @@ function Nav() {
               );
             })}
             <RightSideTime>{userName} 님</RightSideTime>
-            { userName ? 
+            {/* { userName ? 
               <RightSideTime onClick={onClickLogOut}>로그아웃</RightSideTime>
               :
               null 
-            }
+            } */}
+            <RightSideTime onClick={onClickLogOut}>로그아웃</RightSideTime>
           </RightSide>
         </NavWrapper>
       </NavContainer>
