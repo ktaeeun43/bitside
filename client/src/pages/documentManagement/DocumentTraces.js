@@ -128,6 +128,13 @@ flex: 0 0 4.8rem;
 padding: 0.5rem 2.46rem;
   word-break: keep-all;
 `;
+const StyledTableCellOperateValue = styled.div`
+display: flex;
+align-items: center;
+flex: 0 0 4.8rem;
+padding: 0.5rem 2.46rem;
+  word-break: keep-all;
+`;
 
 const TableInCell = styled.td`
   display: flex;
@@ -170,11 +177,11 @@ function DocumentTraces() {
                 <>
                   <StyledTableRow key={document._id}>
                     <TableInCell>
-                      <StyledTableCellValue>{idx}</StyledTableCellValue>
+                      <StyledTableCellValue>{idx+1}</StyledTableCellValue>
                       <StyledTableCellValue>{document.area}</StyledTableCellValue>
+                      <StyledTableCellValue>ISMS-00-{idx}</StyledTableCellValue>
                       <StyledTableCellValue>{document.title}</StyledTableCellValue>
                       <StyledTableCellValue>{document.cycle}</StyledTableCellValue>
-                      <StyledTableCellValue></StyledTableCellValue>
                       <StyledTableCellValue>{document.writer.name}</StyledTableCellValue>
                       <StyledTableCellValue>{createdAt}</StyledTableCellValue>
                     </TableInCell>
